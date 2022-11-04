@@ -19,10 +19,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
             rigid.AddForce(Vector2.left * Movespeed , ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             rigid.AddForce(Vector2.right * Movespeed  , ForceMode2D.Impulse);
 
         }
