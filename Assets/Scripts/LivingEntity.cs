@@ -32,4 +32,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         currentHp -= dmgMsg.damageAmount;
     }
+
+    public virtual void CureHealthPoint(int cureAmount = 0)
+    {
+        currentHp += cureAmount;
+    }
 }

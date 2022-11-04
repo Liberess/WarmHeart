@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour, IItem
 {
+    [SerializeField, Range(0, 500)] private int cureAmount = 10;
+
     public void OnUse()
     {
         Debug.Log("Destroy KeyItem");
@@ -12,7 +14,10 @@ public class KeyItem : MonoBehaviour, IItem
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.TryGetComponent(out ))
-        GameManager.Instance.GetKey();
+        if(collision.TryGetComponent(out PlayerHealth playerHealth))
+        {
+            playerHealth.CureHealthPoint(cureAmount);
+            GameManager.Instance.GetKey();
+        }    
     }
 }
