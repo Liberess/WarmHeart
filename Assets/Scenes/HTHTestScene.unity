@@ -219,7 +219,9 @@ GameObject:
   - component: {fileID: 679954956}
   - component: {fileID: 679954955}
   - component: {fileID: 679954954}
-  - component: {fileID: 679954958}
+  - component: {fileID: 679954959}
+  - component: {fileID: 679954961}
+  - component: {fileID: 679954960}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -341,7 +343,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &679954958
+--- !u!114 &679954959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679954953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a947d38d5065142915ad472c033c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originHp: 100
+  currentHp: 0
+--- !u!114 &679954960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,6 +370,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movespeed: 0.077
+--- !u!114 &679954961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679954953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e682ba02f9acba4fb7e0f376eee643b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Flyforce: 0.1
+  FlyPower: 100
+  FlyCount: 0
 --- !u!1 &821056256
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +398,7 @@ GameObject:
   - component: {fileID: 821056257}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
