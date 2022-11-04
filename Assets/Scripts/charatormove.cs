@@ -6,7 +6,7 @@ public class charatormove : MonoBehaviour
 {
     Rigidbody2D rigid;
     [SerializeField, Range(0f, 5f)] private float Movespeed;
-    [SerializeField, Range(0f, 5f)] private float Flyforce;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +26,6 @@ public class charatormove : MonoBehaviour
             rigid.AddForce(Vector2.right * Movespeed  , ForceMode2D.Impulse);
 
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rigid.AddForce(Vector2.up * Flyforce, ForceMode2D.Impulse);
-
-        }
+        
     }
 }
