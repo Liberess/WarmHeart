@@ -19,11 +19,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
             if (currentHp > originHp)
                 currentHp = originHp;
             else if (currentHp <= 0)
-                DeathAction();
+                DeathAction?.Invoke();
 
-            Debug.Log("ch");
-
-            ChangedHpValueAction();
+            ChangedHpValueAction?.Invoke();
         }
     }
 
@@ -37,11 +35,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public virtual void ApplyDamage(DamageMessage dmgMsg)
     {
-        currentHp -= dmgMsg.damageAmount;
+        CurrentHp -= dmgMsg.damageAmount;
     }
 
     public virtual void CureHealthPoint(int cureAmount = 0)
     {
-        currentHp += cureAmount;
+        CurrentHp += cureAmount;
     }
 }
