@@ -19,14 +19,21 @@ public class LivingEntity : MonoBehaviour, IDamageable
             if (currentHp > originHp)
                 currentHp = originHp;
             else if (currentHp <= 0)
-                DeathAction?.Invoke();
+                DeathAction();
 
-            ChangedHpValueAction?.Invoke();
+            Debug.Log("ch");
+
+            ChangedHpValueAction();
         }
     }
 
-    UnityAction DeathAction;
-    UnityAction ChangedHpValueAction;
+    public UnityAction DeathAction;
+    public UnityAction ChangedHpValueAction;
+
+    private void Awake()
+    {
+        currentHp = originHp;
+    }
 
     public virtual void ApplyDamage(DamageMessage dmgMsg)
     {
