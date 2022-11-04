@@ -68,6 +68,8 @@ public class DataManager : MonoBehaviour
     #region Game Data Load & Save
     public void InitializedGameData()
     {
+        m_GameData.deathCount = 0;
+
         for (int i = 0; i < m_GameData.isClears.Length; i++)
             m_GameData.isClears[i] = false;
         

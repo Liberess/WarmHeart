@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isKey = false;
     public bool IsKey { get => isKey; }
 
-
     private void Awake()
     {
         if(!Instance)

@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public int deathCount;
+
     public bool[] isClears = new bool[3];
 
     public float bgm;
