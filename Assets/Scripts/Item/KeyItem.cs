@@ -17,7 +17,7 @@ public class KeyItem : MonoBehaviour, IItem
         if(collision.TryGetComponent(out PlayerHealth playerHealth))
         {
             playerHealth.CureHealthPoint(cureAmount);
-            GameManager.Instance.GetKey();
+            GameManager.Instance.PickupKey();
         }    
     }
 }
