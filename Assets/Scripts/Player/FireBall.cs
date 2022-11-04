@@ -9,7 +9,7 @@ public class FireBall : MonoBehaviour
 
     private void Start()
     {
-        transform.Translate(1, 0, 0);
+        transform.Translate(2, 0, 0);
         Destroy(gameObject, destoryTime);
     }
 

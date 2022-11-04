@@ -20,7 +20,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
                 currentHp = originHp;
             else if (currentHp <= 0)
                 DeathAction?.Invoke();
-
             ChangedHpValueAction?.Invoke();
         }
     }
