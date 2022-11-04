@@ -31,7 +31,7 @@ public class DataManager : MonoBehaviour
 
     private static GameObject m_Container;
 
-    [Header("==== Game Data Information ===="), Space(10)]
+    [Space(5), Header("==== Game Data Information ====")]
     [SerializeField] private GameData m_GameData;
     public GameData GameData
     {
