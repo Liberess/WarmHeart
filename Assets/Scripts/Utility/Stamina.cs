@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class Stamina : MonoBehaviour
 {
     public GameObject Player;
-    Image image;
-    public Image image1;
+    Image _image;
+    public Image _image1;
+    Animator anim;
+    public Gradient gradient;
     // Start is called before the first frame update
     void Start()
     {
-        image = gameObject.GetComponent<Image>();
+        _image = GetComponent<Image>();
+        anim = _image1.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,14 +23,14 @@ public class Stamina : MonoBehaviour
         float c_fill = Player.GetComponent<PlayerFly>().FlyPower;
         if (c_fill != 100)
         {
-            image.enabled = true;
-            image1.enabled = true;
-            image.fillAmount = c_fill / 100;
+            anim.SetBool("isActive", true);
+            _image.fillAmount = c_fill / 100;
+            _image.color = gradient.Evaluate(_image.fillAmount);
+            //Debug.Log(_image.color);
         }
         else
         {
-            image.enabled = false;
-            image1.enabled = false;
+            anim.SetBool("isActive", false);
         }
         
     }

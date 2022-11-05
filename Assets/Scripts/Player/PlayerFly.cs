@@ -8,6 +8,7 @@ public class PlayerFly : MonoBehaviour
     [SerializeField, Range(0f, 5f)] private float Flyforce;
     [SerializeField, Range(0f, 100f)] public float FlyPower;
     public int FlyCount=0;
+    public GameObject Fire;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -31,12 +32,17 @@ public class PlayerFly : MonoBehaviour
             if (FlyPower - Time.deltaTime * 3 >= 0)
             {
                 FlyPower -= Time.deltaTime * 3;
+                Fire.gameObject.SetActive(true);
                 rigid.AddForce(Vector2.up, ForceMode2D.Impulse);
                 if (rigid.velocity.y > Flyforce)//¿ÞÂÊ
                 {
                     rigid.velocity = new Vector2(rigid.velocity.x, Flyforce );
                 }
             }
+        }
+        else
+        {
+            Fire.gameObject.SetActive(false);
         }
         if (Input.GetKey(KeyCode.D))
         {
