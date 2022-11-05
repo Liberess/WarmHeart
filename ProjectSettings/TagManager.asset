@@ -14,10 +14,11 @@ TagManager:
   - Water
   - UI
   - PlayerBullet
+  - Highlight
+  - Background
+  - PostProcessing
+  - IgnorePostProcessing
   - WindBlow
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2016798241
+    locked: 0
+  - name: Player
+    uniqueID: 712406883
     locked: 0

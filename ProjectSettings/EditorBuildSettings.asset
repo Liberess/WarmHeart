@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 8c5e1d45cb273184e84a8e595ee49c6d
+  - enabled: 1
+    path: Assets/Scenes/NewGameCutScene.unity
+    guid: 29fa1e50c25f8674d845c9aa2cffa5b3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 385c03abfe9c44547a76736f863b3d68, type: 2}
