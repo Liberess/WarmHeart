@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerControl playerControl;
 
     public GameObject Fireball;
+    [SerializeField] private Transform shotPos;
 
     private const float MinTimeBetAttack = 0.5f;
     private float lastAttackTime;
@@ -28,6 +29,9 @@ public class PlayerAttack : MonoBehaviour
     {
         PlayerFly = GetComponent<PlayerFly>();
         playerControl = GetComponent<PlayerControl>();
+
+        if (!shotPos)
+            shotPos = transform.Find("ShotPos");
     }
 
     private void OnAttack()
@@ -39,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
                 lastAttackTime = Time.time;
                 PlayerFly.FlyPower -= 5;
 
-                var bullet = Instantiate(Fireball, transform.position, transform.rotation)
+                var bullet = Instantiate(Fireball, shotPos.position, Quaternion.identity)
                     .GetComponent<FireBall>();
 
                 DamageMessage dmg;
