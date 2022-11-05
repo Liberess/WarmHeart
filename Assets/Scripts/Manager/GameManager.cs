@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isKey = false;
     public bool IsKey { get => isKey; }
 
+    public bool IsGamePlay { get; private set; } = true;
+
     private void Awake()
     {
         if(!Instance)
@@ -19,7 +21,40 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    private void Update()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if(AudioManager.Instance.SetActiveOptionPanel())
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+        }
+    }
+
     public void PickupKey() => isKey = true;
+
+    public void OnClickUIButton(UIButtonType uIButtonType)
+    {
+        switch (uIButtonType.EUIButtonType)
+        {
+            case EUIButtonType.Restart:
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                break;
+            case EUIButtonType.Resume:
+                Time.timeScale = 1f;
+                AudioManager.Instance.SetActiveOptionPanel();
+                break;
+            case EUIButtonType.Lobby:
+                GoToScene("Lobby");
+                break;
+        }
+    }
 
     public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
 }

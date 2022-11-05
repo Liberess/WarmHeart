@@ -101,6 +101,8 @@ public class DataManager : MonoBehaviour
             byte[] bytes = Convert.FromBase64String(code);
             string FromJsonData = System.Text.Encoding.UTF8.GetString(bytes);
             m_GameData = JsonUtility.FromJson<GameData>(FromJsonData);
+
+            Debug.Log("LoadGameData");
         }
         else
         {
@@ -108,6 +110,8 @@ public class DataManager : MonoBehaviour
             File.Create(Application.persistentDataPath + GameDataFileName);
 
             InitializedGameData();
+
+            Debug.Log("NewGameData");
         }
     }
 

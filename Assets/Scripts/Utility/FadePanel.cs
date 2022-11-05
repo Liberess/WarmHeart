@@ -5,19 +5,23 @@ using UnityEngine.UI;
 
 public class FadePanel : MonoBehaviour
 {
-    private static FadePanel instance;
-    public static FadePanel Instance { get => instance; }
+    public static FadePanel Instance { get; private set; }
 
-    [SerializeField] private Image Panel;
-    [SerializeField] private Text txt;
+    [SerializeField] private Image panel;
 
     private float time = 0f;
     [SerializeField, Range(0.0f, 10.0f)] private float fadeTime = 0.2f;
 
     private void Awake()
     {
-        if(instance == null)
-            instance = this;
+        if(Instance == null)
+            Instance = this;
+    }
+
+    private void Start()
+    {
+        if(!panel)
+            panel = GetComponentInChildren<Image>();
     }
 
     public void Fade() => StartCoroutine(FadeFlow());
@@ -28,25 +32,24 @@ public class FadePanel : MonoBehaviour
 
     private IEnumerator FadeInProcess()
     {
-        Panel.gameObject.SetActive(true);
+        panel.gameObject.SetActive(true);
 
         time = 0f;
 
-        Color alpha = Panel.color;
+        Color alpha = panel.color;
 
         while (alpha.a < 1f)
         {
             time += Time.deltaTime / fadeTime;
             alpha.a = Mathf.Lerp(0, 1, time);
-            Panel.color = alpha;
+            panel.color = alpha;
             yield return null;
         }
     }
 
     private IEnumerator FadeOutProcess()
     {
-        Panel.gameObject.SetActive(true);
-        txt.gameObject.SetActive(false);
+        panel.gameObject.SetActive(true);
 
         time = 0f;
 
@@ -56,27 +59,27 @@ public class FadePanel : MonoBehaviour
         {
             time += Time.deltaTime / fadeTime;
             alpha.a = Mathf.Lerp(1, 0, time);
-            Panel.color = alpha;
+            panel.color = alpha;
             yield return null;
         }
 
-        Panel.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
         yield return null;
     }
 
     private IEnumerator FadeFlow()
     {
-        Panel.gameObject.SetActive(true);
+        panel.gameObject.SetActive(true);
 
         time = 0f;
 
-        Color alpha = Panel.color;
+        Color alpha = panel.color;
 
         while(alpha.a < 1f)
         {
             time += Time.deltaTime / fadeTime;
             alpha.a = Mathf.Lerp(0, 1, time);
-            Panel.color = alpha;
+            panel.color = alpha;
             yield return null;
         }
 
@@ -88,11 +91,11 @@ public class FadePanel : MonoBehaviour
         {
             time += Time.deltaTime / fadeTime;
             alpha.a = Mathf.Lerp(1, 0, time);
-            Panel.color = alpha;
+            panel.color = alpha;
             yield return null;
         }
 
-        Panel.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
         yield return null;
     }
 }

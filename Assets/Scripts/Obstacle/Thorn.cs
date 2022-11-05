@@ -1,38 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Thorn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isActive = false;
+
+    [SerializeField] private float activeRange = 10.0f;
+    private float targetDistance;
+    private Transform target;
+
+    private BoxCollider2D boxCol;
+
+    private void OnDrawGizmosSelected()
     {
-        
+        Gizmos.color = new Color(Color.red.a, Color.red.g, Color.red.b, 0.5f);
+        Gizmos.DrawSphere(transform.position, activeRange);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        boxCol = GetComponent<BoxCollider2D>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void Start()
     {
-        
-        if (collision.gameObject.tag=="Player" && collision.gameObject.GetComponent<PlayerHealth>().invincibility <= 0)
+        boxCol.enabled = false;
+        target = FindObjectOfType<PlayerControl>().transform;
+    }
+
+    private void Update()
+    {
+        if (isActive)
+            return;
+
+        targetDistance = Vector2.Distance(transform.position, target.position);
+        if(targetDistance <= activeRange)
         {
-            collision.gameObject.GetComponent<PlayerHealth>().invincibility = 1.5f;
+            isActive = true;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            StartCoroutine(SetBoxColliderEnabledCo(true, 1f));
+        }
+    }
+
+    private IEnumerator SetBoxColliderEnabledCo(bool active, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        boxCol.enabled = active;
+        yield return null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out PlayerHealth playerHealth))
+        {
             DamageMessage dmg;
             dmg.damager = gameObject;
             dmg.damageAmount = 10;
             dmg.hitPoint = transform.position;
-            collision.gameObject.GetComponent<LivingEntity>().ApplyDamage(dmg);
-            
+
+            playerHealth.ApplyDamage(dmg);
         }
+
         Destroy(gameObject);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag=="Player")
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }

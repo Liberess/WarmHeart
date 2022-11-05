@@ -2,25 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Iceroket : MonoBehaviour
+public class IceRoket : MonoBehaviour
 {
-    public GameObject iceroket;
-    float respontime = 2;
-    // Start is called before the first frame update
-    void Start()
+    private GameManager gameMgr;
+
+    [SerializeField] private GameObject iceBulletPrefab;
+    [SerializeField, Range(0f, 10f)] private float responTime = 2f;
+
+    private void Start()
     {
-        
+        gameMgr = GameManager.Instance;
+
+        StartCoroutine(CreateBulletCo());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CreateBulletCo()
     {
-        if (respontime > 0)
-            respontime -= Time.deltaTime;
-        else
+        WaitForSeconds delay = new WaitForSeconds(responTime);
+
+        DamageMessage dmg;
+        dmg.damager = gameObject;
+        dmg.damageAmount = 10;
+        dmg.hitPoint = transform.position;
+
+        while (true)
         {
-            respontime = 2;
-            Instantiate(iceroket,gameObject.transform.position, gameObject.transform.rotation);
+            if (!gameMgr.IsGamePlay)
+                break;
+
+            yield return delay;
+
+            var bullet = Instantiate(iceBulletPrefab, transform.position, Quaternion.identity)
+                .GetComponent<IceBullet>();
+            bullet.SetupBullet(dmg, (transform.rotation.y == 1f ? 1 : -1));
         }
+
+        yield return null;
     }
 }

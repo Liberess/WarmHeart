@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2087404275234508840}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 8.5094, y: 3.1857, z: 0}
-  m_LocalScale: {x: 5.4988, y: 0.9685, z: 1}
+  m_LocalScale: {x: 5.4988, y: 2.917713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1112b082c21bc764a834a13fca8f7ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceroket: {fileID: 9150721267025719862, guid: 0e33d9fbd3f0bcc49b9b5234f86ff950, type: 3}
+  iceBulletPrefab: {fileID: 9150721267025719862, guid: 0e33d9fbd3f0bcc49b9b5234f86ff950, type: 3}
+  responTime: 2

@@ -630,8 +630,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Explosion6_7: 21300014
       Explosion6_16: 21300032
+      Explosion6_7: 21300014
       Explosion6_2: 21300004
       Explosion6_10: 21300020
       Explosion6_19: 21300038
