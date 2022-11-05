@@ -14,9 +14,10 @@ public class FireBall : Bullet
         if (!collider.CompareTag("Player"))
         {
             if (collider.TryGetComponent(out LivingEntity livingEntity))
-            {
                 livingEntity.ApplyDamage(dmgMsg);
-            }
+
+            if (collider.TryGetComponent(out StageKeyDoor door))
+                door.OnEnter();
         }
 
         Destroy(gameObject);

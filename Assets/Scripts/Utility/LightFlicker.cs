@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class LightFlicker : MonoBehaviour
 {
-    public Light2D  myLight;
+    [SerializeField] private Light2D  myLight;
 
     private float time = 0f;
     [SerializeField, Range(0f, 10f)] private float fadeTime = 0.2f;

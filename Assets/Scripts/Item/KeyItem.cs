@@ -9,6 +9,7 @@ public class KeyItem : MonoBehaviour, IItem
     public void OnUse()
     {
         Debug.Log("Destroy KeyItem");
+        GameManager.Instance.PickupKey();
         Destroy(gameObject);
     }
 
@@ -17,7 +18,7 @@ public class KeyItem : MonoBehaviour, IItem
         if(collision.TryGetComponent(out PlayerHealth playerHealth))
         {
             playerHealth.CureHealthPoint(cureAmount);
-            GameManager.Instance.PickupKey();
+            OnUse();
         }    
     }
 }
