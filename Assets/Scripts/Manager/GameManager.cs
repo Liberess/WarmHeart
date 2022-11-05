@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isKey = false;
     public bool IsKey { get => isKey; }
 
+    public string SceneName { get; private set; }
+
     public bool IsGamePlay { get; private set; } = true;
 
     private void Awake()
@@ -19,6 +21,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else if(Instance != this)
             Destroy(this.gameObject);
+    }
+
+    private void Start()
+    {
+        SceneName = SceneManager.GetActiveScene().name;
     }
 
     private void Update()

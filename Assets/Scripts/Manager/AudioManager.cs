@@ -108,8 +108,8 @@ public class AudioManager : MonoBehaviour
 
         if (bgmNumTxt == null || sfxNumTxt == null)
         {
-            bgmNumTxt = bgmSlider.transform.Find("BGMNumTxt").GetComponent<Text>();
-            sfxNumTxt = sfxSlider.transform.Find("SFXNumTxt").GetComponent<Text>();
+            bgmNumTxt = bgmSlider.transform.Find("NumTxt").GetComponent<Text>();
+            sfxNumTxt = sfxSlider.transform.Find("NumTxt").GetComponent<Text>();
         }
     }
 
@@ -184,12 +184,6 @@ public class AudioManager : MonoBehaviour
     #region Audio Save
     public void BGMSave()
     {
-        if (!bgmNumTxt)
-        {
-            bgmNumTxt = bgmSlider.transform.Find("BGMNumTxt").GetComponent<Text>();
-            sfxNumTxt = sfxSlider.transform.Find("SFXNumTxt").GetComponent<Text>();
-        }
-
         bgmNumTxt.text = Mathf.RoundToInt(bgmSlider.value).ToString();
         bgmPlayer.volume = bgmSlider.value / 100f;
         DataManager.Instance.GameData.bgm = bgmSlider.value;

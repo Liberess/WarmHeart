@@ -37,6 +37,7 @@ public abstract class Bullet : MonoBehaviour
                 break;
             case DirectionType.Left:
                 transform.rotation = Quaternion.Euler(0f, -180, 0f);
+                transform.Translate(1, 0, 0);
                 break;
             case DirectionType.Right:
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
