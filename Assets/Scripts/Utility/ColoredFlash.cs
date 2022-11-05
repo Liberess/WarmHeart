@@ -7,7 +7,7 @@ public class ColoredFlash : MonoBehaviour
     [SerializeField] private Material flashMaterial;
 
     [Tooltip("Duration of the flash.")]
-    [SerializeField] private float duration;
+    [SerializeField] public float Duration;
 
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
@@ -17,23 +17,23 @@ public class ColoredFlash : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
-        flashMaterial = new Material(flashMaterial);
+        //flashMaterial = new Material(flashMaterial);
     }
 
-    public void Flash(Color color)
+    public void Flash()
     {
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
 
-        flashRoutine = StartCoroutine(FlashRoutine(color));
+        flashRoutine = StartCoroutine(FlashRoutine());
     }
 
-    private IEnumerator FlashRoutine(Color color)
+    private IEnumerator FlashRoutine()
     {
         spriteRenderer.material = flashMaterial;
-        flashMaterial.color = color;
+        //flashMaterial.color = color;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(Duration);
 
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;

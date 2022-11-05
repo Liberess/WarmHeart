@@ -7,34 +7,43 @@ public abstract class Bullet : MonoBehaviour
 {
     [SerializeField] protected float fireMoveSpeed = 3f;
     [SerializeField] protected float destoryTime = 10f;
-    protected int direction;
+    protected DirectionType dircType;
     protected DamageMessage dmgMsg;
-
-    private SpriteRenderer sprite;
 
     protected abstract void OnEnter(Collider2D collider);
 
-    private void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
-
     private void Start()
     {
-        transform.Translate(3, 0, 0);
         Destroy(gameObject, destoryTime);
     }
 
     private void FixedUpdate()
     {
-        transform.Translate((Vector2.right * direction) * fireMoveSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * fireMoveSpeed * Time.deltaTime);
     }
 
-    public void SetupBullet(DamageMessage _dmgMsg, int _direction)
+    public void SetupBullet(DamageMessage _dmgMsg, DirectionType _dircType)
     {
         dmgMsg = _dmgMsg;
-        direction = _direction;
-        sprite.flipX = (direction > 0) ? false : true;
+        dircType = _dircType;
+
+        switch (dircType)
+        {
+            case DirectionType.Up:
+                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                break;
+            case DirectionType.Down:
+                transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+                break;
+            case DirectionType.Left:
+                transform.Translate(2, 0, 0);
+                transform.rotation = Quaternion.Euler(0f, -180, 0f);
+                break;
+            case DirectionType.Right:
+                transform.Translate(-2, 0, 0);
+                //transform.rotation = Quaternion.Euler(0f, -180, 0f);
+                break;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

@@ -57,4 +57,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
+
+    private void OnSkip()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    private void OnPressBtn()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
 }
