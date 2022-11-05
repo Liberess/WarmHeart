@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2087404275234508841}
   - component: {fileID: 2087404275234508843}
   m_Layer: 0
-  m_Name: iceroket
+  m_Name: IceRoket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
