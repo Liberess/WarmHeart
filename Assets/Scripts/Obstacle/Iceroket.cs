@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DirectionType { Up, Down, Left, Right }
+
 public class IceRoket : MonoBehaviour
 {
     private GameManager gameMgr;
 
     [SerializeField] private GameObject iceBulletPrefab;
     [SerializeField, Range(0f, 10f)] private float responTime = 2f;
+    [SerializeField] private DirectionType dircType;
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class IceRoket : MonoBehaviour
 
             var bullet = Instantiate(iceBulletPrefab, transform.position, Quaternion.identity)
                 .GetComponent<IceBullet>();
-            bullet.SetupBullet(dmg, (transform.rotation.y == 1f ? 1 : -1));
+            bullet.SetupBullet(dmg, dircType);
         }
 
         yield return null;

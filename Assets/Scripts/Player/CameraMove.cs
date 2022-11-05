@@ -10,7 +10,7 @@ public class CameraMove : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 TargetPos = new Vector3(Target.transform.position.x, Target.transform.position.y, CameraZ);
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * 2);
+        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * 5f);
     }
 
     // Update is called once per frame

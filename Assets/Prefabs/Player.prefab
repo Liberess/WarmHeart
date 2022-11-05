@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 679954962}
   - component: {fileID: 5508502899505641831}
   - component: {fileID: 7183608072713332840}
+  - component: {fileID: -1663904326374953741}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -82,12 +83,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 595162779, guid: a0101df11b07fa745b55ced9c3898475, type: 3}
+  m_Sprite: {fileID: -1191217071, guid: 8057ecb545174f745aaff2ac236228f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.262873, y: 1.5471429}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -147,8 +148,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.2628571, y: 1.5489731}
+  m_Offset: {x: 0, y: -0.17904496}
+  m_Size: {x: 0.9214225, y: 1.1879079}
   m_Direction: 0
 --- !u!114 &6443557890862173256
 MonoBehaviour:
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originHp: 100
   currentHp: 100
-  invincibility: 0
+  minTimeBetDamaged: 0.1
 --- !u!114 &6443557890862173270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movespeed: 0.05
+  inputValue: {x: 0, y: 0}
+  moveVec: {x: 0, y: 0}
 --- !u!114 &679954962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 8b44aef049e5cc849be9df7d1fe320c0, type: 2}
-  duration: 0.5
+  Duration: 0
 --- !u!114 &7183608072713332840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +235,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449f523cc1af1f64e8cf44274d46ab48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1663904326374953741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443557890862173262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e045776d2e51a574092427640705e741, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
