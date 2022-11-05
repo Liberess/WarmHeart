@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 336304896613906281}
   - component: {fileID: 336304896613906286}
   - component: {fileID: 336304896613906283}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 2
+  WindPower: 0.5
 --- !u!1 &336304898187088168
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336304898187088171}
   - component: {fileID: 336304898187088170}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

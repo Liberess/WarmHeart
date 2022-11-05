@@ -24,15 +24,21 @@ public class PlayerFly : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
+            if (rigid.gravityScale == 0.3f)
+                rigid.gravityScale = 1;
             if (FlyPower - Time.deltaTime * 3 >= 0)
             {
                 FlyPower -= Time.deltaTime * 3;
-                rigid.AddForce(Vector2.up * Flyforce, ForceMode2D.Impulse);
+                rigid.AddForce(Vector2.up, ForceMode2D.Impulse);
+                if (rigid.velocity.y > Flyforce)//¿ÞÂÊ
+                {
+                    rigid.velocity = new Vector2(rigid.velocity.x, Flyforce );
+                }
             }
-            else
-            {
-                rigid.gravityScale = 0.3f;
-            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            rigid.gravityScale = 0.3f;
         }
 
     }

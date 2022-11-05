@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
                 dmg.damageAmount = 10;
                 dmg.hitPoint = transform.position;
 
-                DirectionType dirc = (playerControl.PlayerMove.XDirection > 0) ? DirectionType.Left : DirectionType.Right;
+                DirectionType dirc = (playerControl.PlayerMove.XDirection > 0) ? DirectionType.Right : DirectionType.Left;
                 bullet.SetupBullet(dmg, dirc);
             }
         }
