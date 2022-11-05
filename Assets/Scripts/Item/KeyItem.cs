@@ -8,7 +8,6 @@ public class KeyItem : MonoBehaviour, IItem
 
     public void OnUse()
     {
-        Debug.Log("Destroy KeyItem");
         GameManager.Instance.PickupKey();
         Destroy(gameObject);
     }
