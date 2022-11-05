@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 336304896613906286}
   - component: {fileID: 336304896613906283}
   m_Layer: 11
-  m_Name: wind
+  m_Name: WindTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
