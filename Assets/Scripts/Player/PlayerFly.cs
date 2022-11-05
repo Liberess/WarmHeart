@@ -21,6 +21,10 @@ public class PlayerFly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rigid.velocity.y > Flyforce)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, Flyforce);
+        }
         if (FlyCount == 0 && FlyPower < 100)
         {
             FlyPower = FlyPower + Time.deltaTime >= 100 ? 100 : FlyPower + Time.deltaTime;
@@ -34,10 +38,7 @@ public class PlayerFly : MonoBehaviour
                 FlyPower -= Time.deltaTime * 3;
                 Fire.gameObject.SetActive(true);
                 rigid.AddForce(Vector2.up, ForceMode2D.Impulse);
-                if (rigid.velocity.y > Flyforce)//¿ÞÂÊ
-                {
-                    rigid.velocity = new Vector2(rigid.velocity.x, Flyforce );
-                }
+                
             }
         }
         else

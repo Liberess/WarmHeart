@@ -32,7 +32,15 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if(inputValue != Vector2.zero)
+        if (rigid.velocity.x < left_maxspeed * (-1))//왼쪽
+        {
+            rigid.velocity = new Vector2(left_maxspeed * (-1), rigid.velocity.y);
+        }
+        if (rigid.velocity.x > right_maxspeed)//오른쪽
+        {
+            rigid.velocity = new Vector2(right_maxspeed, rigid.velocity.y);
+        }
+        if (inputValue != Vector2.zero)
         {
             moveVec = new Vector2 (inputValue.x, inputValue.y);
             anim.SetBool("isWalk", true);
@@ -57,19 +65,13 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             rigid.AddForce(Vector2.left, ForceMode2D.Impulse);
-            if (rigid.velocity.x < left_maxspeed * (-1))//왼쪽
-            {
-                rigid.velocity = new Vector2(left_maxspeed * (-1), rigid.velocity.y);
-            }
+            
             
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rigid.AddForce(Vector2.right , ForceMode2D.Impulse);
-            if (rigid.velocity.x > right_maxspeed)//오른쪽
-            {
-                rigid.velocity = new Vector2(right_maxspeed, rigid.velocity.y);//y값을 0으로 잡으면 공중에서 멈춰버림
-            }
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
