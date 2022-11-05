@@ -39,7 +39,7 @@ public class PlayerFly : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             rigid.gravityScale = 0.3f;
         }
