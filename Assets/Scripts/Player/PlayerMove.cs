@@ -22,6 +22,8 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+
+        moveVec.x = 1;
     }
 
     private void Update()
