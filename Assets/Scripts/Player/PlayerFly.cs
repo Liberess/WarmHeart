@@ -23,7 +23,6 @@ public class PlayerFly : MonoBehaviour
         if (FlyCount == 0 && FlyPower < 100)
         {
             FlyPower = FlyPower + Time.deltaTime >= 100 ? 100 : FlyPower + Time.deltaTime;
-
         }
         if (Input.GetKey(KeyCode.S))
         {
