@@ -21,7 +21,6 @@ public abstract class Bullet : MonoBehaviour
 
     private void Start()
     {
-        transform.Translate(3, 0, 0);
         Destroy(gameObject, destoryTime);
     }
 
@@ -35,6 +34,7 @@ public abstract class Bullet : MonoBehaviour
         dmgMsg = _dmgMsg;
         direction = _direction;
         sprite.flipX = (direction > 0) ? false : true;
+        transform.Translate( direction , 0, 0 );
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 336304896613906281}
   - component: {fileID: 336304896613906286}
   - component: {fileID: 336304896613906283}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336304898187088171}
   - component: {fileID: 336304898187088170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

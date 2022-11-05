@@ -20,8 +20,8 @@ public class PlayerFly : MonoBehaviour
         if (FlyCount == 0 && FlyPower < 100)
         {
             FlyPower = FlyPower + Time.deltaTime >= 100 ? 100 : FlyPower + Time.deltaTime;
-        }
 
+        }
         if (Input.GetKey(KeyCode.S))
         {
             if (FlyPower - Time.deltaTime * 3 >= 0)
@@ -34,7 +34,9 @@ public class PlayerFly : MonoBehaviour
                 rigid.gravityScale = 0.3f;
             }
         }
+
     }
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")

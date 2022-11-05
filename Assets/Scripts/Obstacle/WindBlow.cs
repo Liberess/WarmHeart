@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindBlow: MonoBehaviour
 {
     public int Direction;
-    float WindPower = 0.5f;
+    [SerializeField] float WindPower = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
