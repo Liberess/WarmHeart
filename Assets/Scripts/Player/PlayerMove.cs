@@ -49,7 +49,19 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.StopSFX(SFXNames.FootStep);
             anim.SetBool("isWalk", false);
+        }
+        if (GetComponent<PlayerFly>().FlyCount == 1)
+        {
+            AudioManager.Instance.StopSFX(SFXNames.FootStep);
+            float roll = rigid.velocity.x > 0 ? 24 * (-rigid.velocity.x / right_maxspeed) : 24 * (-rigid.velocity.x / left_maxspeed);
+            transform.rotation = Quaternion.Euler(0f, 0f, roll);
+        }
+        else
+        {
+            
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
@@ -64,14 +76,17 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            if(GetComponent<PlayerFly>().FlyCount == 0)
+                AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.left, ForceMode2D.Impulse);
-            
             
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            if (GetComponent<PlayerFly>().FlyCount == 0)
+                AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.right , ForceMode2D.Impulse);
-            
+        
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

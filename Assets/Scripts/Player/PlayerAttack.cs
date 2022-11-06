@@ -41,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
             if (PlayerFly.FlyPower - 5 >= 0)
             {
                 lastAttackTime = Time.time;
+                AudioManager.Instance.PlaySFX(SFXNames.Explosion);
                 PlayerFly.FlyPower -= 5;
 
                 var bullet = Instantiate(Fireball, shotPos.position, Quaternion.identity)

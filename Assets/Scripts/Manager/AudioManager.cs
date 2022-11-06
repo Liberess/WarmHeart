@@ -21,18 +21,17 @@ public class Sound
 
 public enum BGMNames
 {
-    Main,
-    InGame,
-    Protocol,
-    GameWin
+    a,
+    b
 }
+
 
 public enum SFXNames
 {
-    Button,
-    Walk1,
-    Walk2,
-    Walk3
+    Fly,
+    FootStep,
+    Explosion,
+    Land
 }
 
 public class AudioManager : MonoBehaviour
@@ -43,14 +42,14 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-/*            if (!m_Instance)
-            {
-                m_Container = new GameObject();
-                m_Container.name = "AudioManager";
-                m_Instance = m_Container.AddComponent(
-                    typeof(AudioManager)) as AudioManager;
-                DontDestroyOnLoad(m_Container);
-            }*/
+            /*            if (!m_Instance)
+                        {
+                            m_Container = new GameObject();
+                            m_Container.name = "AudioManager";
+                            m_Instance = m_Container.AddComponent(
+                                typeof(AudioManager)) as AudioManager;
+                            DontDestroyOnLoad(m_Container);
+                        }*/
 
             return m_Instance;
         }
@@ -118,7 +117,7 @@ public class AudioManager : MonoBehaviour
         SetAudioObjects();
 
         bgmSlider.maxValue = 100f;
-        sfxSlider.maxValue = 100f;
+        sfxSlider.maxValue = 50f;
 
         bgmSlider.value = DataManager.Instance.GameData.bgm;
         sfxSlider.value = DataManager.Instance.GameData.sfx;
@@ -234,6 +233,11 @@ public class AudioManager : MonoBehaviour
                         sfxPlayer[x].clip = sfx[i].clip;
                         sfxPlayer[x].Play();
                         return;
+                    }
+                    else
+                    {
+                        if (sfxPlayer[x].clip == sfx[i].clip)
+                            return;
                     }
                 }
                 return;

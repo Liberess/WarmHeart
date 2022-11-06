@@ -27,7 +27,7 @@ public class PlayerFly : MonoBehaviour
         }
         if (FlyCount == 0 && FlyPower < 100)
         {
-            FlyPower = FlyPower + Time.deltaTime >= 100 ? 100 : FlyPower + Time.deltaTime;
+            FlyPower = FlyPower + Time.deltaTime * 10 >= 100 ? 100 : FlyPower + Time.deltaTime * 10;
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -35,7 +35,8 @@ public class PlayerFly : MonoBehaviour
                 rigid.gravityScale = 1;
             if (FlyPower - Time.deltaTime * 3 >= 0)
             {
-                FlyPower -= Time.deltaTime * 3;
+                AudioManager.Instance.PlaySFX(SFXNames.Fly);
+                FlyPower -= Time.deltaTime * 5;
                 Fire.gameObject.SetActive(true);
                 rigid.AddForce(Vector2.up, ForceMode2D.Impulse);
                 
@@ -43,19 +44,23 @@ public class PlayerFly : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.StopSFX(SFXNames.Fly);
             Fire.gameObject.SetActive(false);
         }
         if (Input.GetKey(KeyCode.D))
         {
             rigid.gravityScale = 0.3f;
         }
-
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
+            if (!Input.GetKey(KeyCode.S))
+            {
+                AudioManager.Instance.PlaySFX(SFXNames.Land);
+            }
             FlyCount = 0;
             anim.SetBool("isFly", false);
             rigid.gravityScale = 1f;
@@ -65,8 +70,9 @@ public class PlayerFly : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            anim.SetBool("isFly", true);
             FlyCount = 1;
+            anim.SetBool("isFly", true);
+            AudioManager.Instance.StopSFX(SFXNames.FootStep);
         }
     }
 }
