@@ -116,7 +116,7 @@ public class AudioManager : MonoBehaviour
         SetAudioObjects();
 
         bgmSlider.maxValue = 100f;
-        sfxSlider.maxValue = 50f;
+        sfxSlider.maxValue = 100f;
 
         bgmSlider.value = DataManager.Instance.GameData.bgm;
         sfxSlider.value = DataManager.Instance.GameData.sfx;

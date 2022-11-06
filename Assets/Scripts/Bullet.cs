@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public abstract class Bullet : MonoBehaviour
 {
+    private GameManager gameMgr;
+
     [SerializeField] protected float fireMoveSpeed = 3f;
     [SerializeField] protected float destoryTime = 10f;
 
@@ -14,9 +16,10 @@ public abstract class Bullet : MonoBehaviour
 
     protected abstract void OnEnter(Collider2D collider);
 
-    private void Start()
+    private void Update()
     {
-        Destroy(gameObject, destoryTime);
+        if (!gameMgr.IsGamePlay)
+            Destroy(gameObject);
     }
 
     private void FixedUpdate()
@@ -28,6 +31,9 @@ public abstract class Bullet : MonoBehaviour
     {
         dmgMsg = _dmgMsg;
         dircType = _dircType;
+
+        gameMgr = GameManager.Instance;
+        Destroy(gameObject, destoryTime);
 
         switch (dircType)
         {

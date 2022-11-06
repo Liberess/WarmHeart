@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnAttack()
     {
-        if (IsAttack)
+        if (!playerControl.PlayerHealth.IsDead && IsAttack)
         { 
             if (PlayerFly.FlyPower - 5 >= 0)
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public bool IsGamePlay { get; private set; } = true;
 
+    public UnityAction OnGameOverAction;
+
     private void Awake()
     {
         if(!Instance)
@@ -28,9 +31,10 @@ public class GameManager : MonoBehaviour
         SceneName = SceneManager.GetActiveScene().name;
 
         if(SceneManager.GetActiveScene().buildIndex > 2)
-        {
             FadePanel.Instance.FadeOut();
-        }
+
+        OnGameOverAction -= () => IsGamePlay = false;
+        OnGameOverAction += () => IsGamePlay = false;
     }
 
     private void Update()
