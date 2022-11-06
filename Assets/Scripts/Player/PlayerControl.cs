@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    private GameManager gameMgr;
+
     public PlayerFly PlayerFly { get; private set; }
     public PlayerMove PlayerMove { get; private set; }
     public PlayerAttack PlayerAttack { get; private set; }
@@ -15,6 +17,9 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private GameObject background;
     [SerializeField] private GameObject darkBackground;
+
+    [SerializeField] private Transform breathPos;
+    [SerializeField] private GameObject breathPrefab;
 
     private void Awake()
     {
@@ -27,8 +32,12 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
+        gameMgr = GameManager.Instance;
+
         PlayerHealth.DeathAction -= () => OnDeath();
         PlayerHealth.DeathAction += () => OnDeath();
+
+        StartCoroutine(BreathCo());
     }
 
     private void OnEnable()
@@ -36,6 +45,22 @@ public class PlayerControl : MonoBehaviour
         SetDeathStage(false);
         SetChildObjectActive(true);
         SetComponentsActive(true);
+    }
+
+    private IEnumerator BreathCo()
+    {
+        while (true)
+        {
+            if (!gameMgr.IsGamePlay || PlayerHealth.IsDead)
+                break;
+
+            Instantiate(breathPrefab, breathPos.position, Quaternion.identity);
+
+            float randDelay = Random.Range(0.5f, 5f);
+            yield return new WaitForSeconds(randDelay);
+        }
+
+        yield return null;
     }
 
     private void OnDeath()
