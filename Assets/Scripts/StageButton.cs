@@ -29,9 +29,17 @@ public class StageButton : MonoBehaviour
 
     private void Start()
     {
-        if (DataManager.Instance.GameData.isClears[stageNum - 1] || stageNum == 1)
+        if (stageNum == 1 || DataManager.Instance.GameData.isClears[stageNum - 1])
         {
             GetComponent<Image>().sprite = clearSprite;
+            currentLight = lights[0];
+            LightFlicker = currentLight.GetComponentInChildren<LightFlicker>();
+            IsInteractable = true;
+            currentLight.SetActive(true);
+            anim.SetBool("isUnlock", true);
+        }
+        else if (DataManager.Instance.GameData.isClears[stageNum - 1])
+        {
             currentLight = lights[0];
             LightFlicker = currentLight.GetComponentInChildren<LightFlicker>();
             IsInteractable = true;

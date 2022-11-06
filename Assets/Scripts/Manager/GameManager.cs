@@ -75,6 +75,9 @@ public class GameManager : MonoBehaviour
             case EUIButtonType.Lobby:
                 GoToScene("Lobby");
                 break;
+            case EUIButtonType.Quit:
+                Application.Quit();
+                break;
         }
     }
 

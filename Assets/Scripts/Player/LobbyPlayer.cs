@@ -12,7 +12,7 @@ public class LobbyPlayer : MonoBehaviour
 
     private Vector2 inputValue;
 
-    private StageButton interactStageBtn = null;
+    [SerializeField] private StageButton interactStageBtn = null;
 
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;

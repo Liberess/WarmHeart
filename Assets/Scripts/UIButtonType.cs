@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EUIButtonType { Restart, Resume, Lobby }
+public enum EUIButtonType { Restart, Resume, Lobby, Quit }
 
 public class UIButtonType : MonoBehaviour
 {

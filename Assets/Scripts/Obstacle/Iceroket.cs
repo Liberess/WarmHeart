@@ -12,9 +12,13 @@ public class IceRoket : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float responTime = 2f;
     [SerializeField] private DirectionType dircType;
 
+    [SerializeField] private Transform shotPos;
+
     private void Start()
     {
         gameMgr = GameManager.Instance;
+
+        shotPos = transform.Find("ShotPos");
 
         StartCoroutine(CreateBulletCo());
     }
@@ -35,7 +39,7 @@ public class IceRoket : MonoBehaviour
 
             yield return delay;
 
-            var bullet = Instantiate(iceBulletPrefab, transform.position, Quaternion.identity)
+            var bullet = Instantiate(iceBulletPrefab, shotPos.position, Quaternion.identity)
                 .GetComponent<IceBullet>();
             bullet.SetupBullet(dmg, dircType);
         }
