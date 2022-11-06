@@ -190,7 +190,8 @@ public class AudioManager : MonoBehaviour
     #region Audio Save
     public void BGMSave()
     {
-        bgmNumTxt.text = Mathf.RoundToInt(bgmSlider.value).ToString();
+        if(bgmNumTxt != null)
+            bgmNumTxt.text = Mathf.RoundToInt(bgmSlider.value).ToString();
         bgmPlayer.volume = bgmSlider.value / 100f;
         DataManager.Instance.GameData.bgm = bgmSlider.value;
     }
@@ -200,7 +201,8 @@ public class AudioManager : MonoBehaviour
         for (int i = 0; i < sfxPlayerList.Count; i++)
             sfxPlayerList[i].volume = sfxSlider.value / 100f;
 
-        sfxNumTxt.text = Mathf.RoundToInt(sfxSlider.value).ToString();
+        if (sfxNumTxt != null)
+            sfxNumTxt.text = Mathf.RoundToInt(sfxSlider.value).ToString();
         DataManager.Instance.GameData.sfx = sfxSlider.value;
     }
     #endregion
@@ -276,6 +278,9 @@ public class AudioManager : MonoBehaviour
 
     public bool SetActiveOptionPanel()
     {
+        if (optionPanel == null)
+            return false;
+
         if(optionPanel.activeSelf)
         {
             optionPanel.SetActive(false);

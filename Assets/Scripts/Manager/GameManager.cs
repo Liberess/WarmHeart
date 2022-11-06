@@ -30,10 +30,12 @@ public class GameManager : MonoBehaviour
     {
         SceneName = SceneManager.GetActiveScene().name;
 
-        if(SceneManager.GetActiveScene().buildIndex > 2)
+        if(SceneManager.GetActiveScene().buildIndex > 5 && FadePanel.Instance != null)
             FadePanel.Instance.FadeOut();
 
         Time.timeScale = 1f;
+
+        isKey = false;
 
         OnGameOverAction -= () => IsGamePlay = false;
         OnGameOverAction += () => IsGamePlay = false;
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void SetGamePlayPause(bool active) => IsGamePlay = !active;
 
     public void PickupKey() => isKey = true;
 
