@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex > 2)
             FadePanel.Instance.FadeOut();
 
+        Time.timeScale = 1f;
+
         OnGameOverAction -= () => IsGamePlay = false;
         OnGameOverAction += () => IsGamePlay = false;
     }

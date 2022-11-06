@@ -8,8 +8,8 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rigid;
     [SerializeField, Range(0f, 5f)] private float Movespeed;
 
-    [SerializeField] private Vector2 inputValue;
-    [SerializeField] private Vector2 moveVec;
+    private Vector2 inputValue;
+    private Vector2 moveVec;
     [SerializeField] float wind_maxspeed;
 
     public bool XFlip => (moveVec.x > 0) ? true : false;

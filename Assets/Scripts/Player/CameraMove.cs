@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public GameObject Target;
+    public Transform Target;
     public float CameraZ = -10;
-    // Start is called before the first frame update
-    void FixedUpdate()
+
+    private void Start()
     {
-        Vector3 TargetPos = new Vector3(Target.transform.position.x, Target.transform.position.y, CameraZ);
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * 5f);
+        if (Target == null)
+            Target = FindObjectOfType<PlayerControl>().gameObject.transform;
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        Vector3 TargetPos = new Vector3(Target.position.x, Target.position.y, CameraZ);
+        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * 5f);
+    }
 }
