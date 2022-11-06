@@ -15,17 +15,20 @@ public class BreakableWall : Obstacle
     }
     private void Update()
     {
-        switch (livingEntity.CurrentHp)
+        if (Hp10 != null)
         {
-            case 30:
-                GetComponent<SpriteRenderer>().sprite = Hp30;
-                break;
-            case 20:
-                GetComponent<SpriteRenderer>().sprite = Hp20;
-                break;
-            case 10:
-                GetComponent<SpriteRenderer>().sprite = Hp10;
-                break;
+            switch (livingEntity.CurrentHp)
+            {
+                case 30:
+                    GetComponent<SpriteRenderer>().sprite = Hp30;
+                    break;
+                case 20:
+                    GetComponent<SpriteRenderer>().sprite = Hp20;
+                    break;
+                case 10:
+                    GetComponent<SpriteRenderer>().sprite = Hp10;
+                    break;
+            }
         }
         
     }

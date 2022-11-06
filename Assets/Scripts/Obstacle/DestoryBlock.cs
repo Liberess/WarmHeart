@@ -5,10 +5,11 @@ using UnityEngine;
 public class DestoryBlock : MonoBehaviour
 {
     public GameObject Block;
+    Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigid = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,8 +17,9 @@ public class DestoryBlock : MonoBehaviour
     {
         if(Block == null)
         {
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            rigid.gravityScale = 1;
+            rigid.constraints = RigidbodyConstraints2D.None;
+            rigid.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }

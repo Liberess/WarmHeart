@@ -66,6 +66,15 @@ public class PlayerFly : MonoBehaviour
             rigid.gravityScale = 1f;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            FlyCount = 0;
+            anim.SetBool("isFly", false);
+            rigid.gravityScale = 1f;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
