@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9150721267025719861}
   - component: {fileID: -7666154544811131911}
   - component: {fileID: 7987481638783500787}
-  - component: {fileID: 1172694456225095461}
+  - component: {fileID: 446078713893223641}
   m_Layer: 0
   m_Name: IceBullet
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!70 &1172694456225095461
+--- !u!70 &446078713893223641
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +156,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5785639, y: 0.104616255}
-  m_Size: {x: 1.4890152, y: 1.7351352}
-  m_Direction: 0
+  m_Offset: {x: 0.10678262, y: 0.10576785}
+  m_Size: {x: 2.6213098, y: 0.83039534}
+  m_Direction: 1
