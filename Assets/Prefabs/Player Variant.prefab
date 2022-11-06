@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a947d38d5065142915ad472c033c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originHp: 50
+  originHp: 40
   currentHp: 100
   minTimeBetDamaged: 0.1
 --- !u!114 &1258716516509486698
