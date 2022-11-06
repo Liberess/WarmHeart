@@ -19,9 +19,8 @@ TagManager:
   - PostProcessing
   - IgnorePostProcessing
   - WindBlow
-  - 
-  - 
-  - 
+  - Effect
+  - Obstacle
   - 
   - 
   - 
@@ -49,4 +48,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 712406883
+    locked: 0
+  - name: Effect
+    uniqueID: 1032899779
     locked: 0

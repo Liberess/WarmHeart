@@ -6,15 +6,10 @@ public class BreakableWall : Obstacle
 {
     private LivingEntity livingEntity;
 
-    private void Awake()
+    private void Start()
     {
         livingEntity = GetComponent<LivingEntity>();
         livingEntity.DeathAction += () => Destroy(gameObject);
-    }
-
-    private void Start()
-    {
-
     }
 
     public override void OnEnter()

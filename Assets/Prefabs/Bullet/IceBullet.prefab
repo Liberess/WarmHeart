@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMoveSpeed: 3
   destoryTime: 10
+  effectPrefab: {fileID: 328894994924687036, guid: 7753ea31cf87b8149b6d732c56cad4ad, type: 3}
 --- !u!50 &7987481638783500787
 Rigidbody2D:
   serializedVersion: 4

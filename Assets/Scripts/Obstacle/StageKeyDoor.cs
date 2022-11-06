@@ -10,6 +10,8 @@ public class StageKeyDoor : MonoBehaviour
         {
             var sceneNum = GameManager.Instance.SceneName.Substring(6);
             DataManager.Instance.GameData.isClears[int.Parse(sceneNum)] = true;
+
+
         }
     }
 }
