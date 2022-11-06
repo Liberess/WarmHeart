@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cec64a0772c1440ae4de57eef81f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp30: {fileID: -496978338, guid: f7adb90b68b200441a009a1052b0f79a, type: 3}
+  Hp20: {fileID: 940001395, guid: f7adb90b68b200441a009a1052b0f79a, type: 3}
+  Hp10: {fileID: -561608049, guid: f7adb90b68b200441a009a1052b0f79a, type: 3}
 --- !u!114 &2641700189981452493
 MonoBehaviour:
   m_ObjectHideFlags: 0
