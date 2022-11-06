@@ -70,12 +70,11 @@ public class AudioManager : MonoBehaviour
 
     [Space(10), Header("== Setting Audio Player ==")]
     [SerializeField] private AudioSource bgmPlayer = null;
-    [SerializeField] private AudioSource[] sfxPlayer = null;
+    [SerializeField] private List<AudioSource> sfxPlayerList = new List<AudioSource>();
 
     [Space(10), Header("== Setting Audio UI ==")]
     [SerializeField] private Text bgmNumTxt;
     [SerializeField] private Text sfxNumTxt;
-
 
     private void Awake()
     {
@@ -140,14 +139,22 @@ public class AudioManager : MonoBehaviour
 
     private void UpdateBGMPlayer()
     {
-        var sfxChild = transform.GetChild(0);
-        bgmPlayer = sfxChild.GetComponent<AudioSource>();
+        var child = transform.GetChild(0);
+        bgmPlayer = child.GetComponent<AudioSource>();
     }
 
     private void UpdateSFXPlayer()
     {
-        var sfxChild = transform.GetChild(1);
-        sfxPlayer = sfxChild.GetComponents<AudioSource>();
+        var players = FindObjectsOfType<AudioSource>();
+
+        foreach(var player in players)
+        {
+            if (player.name != "BGMPlayer")
+                sfxPlayerList.Add(player);
+        }
+
+        /*var sfxChild = transform.GetChild(1);
+        sfxPlayer = sfxChild.GetComponents<AudioSource>();*/
     }
     #endregion
 
@@ -190,8 +197,8 @@ public class AudioManager : MonoBehaviour
 
     public void SFXSave()
     {
-        for (int i = 0; i < sfxPlayer.Length; i++)
-            sfxPlayer[i].volume = sfxSlider.value / 100f;
+        for (int i = 0; i < sfxPlayerList.Count; i++)
+            sfxPlayerList[i].volume = sfxSlider.value / 100f;
 
         sfxNumTxt.text = Mathf.RoundToInt(sfxSlider.value).ToString();
         DataManager.Instance.GameData.sfx = sfxSlider.value;
@@ -226,17 +233,17 @@ public class AudioManager : MonoBehaviour
         {
             if (sfxName == sfx[i].name)
             {
-                for (int x = 0; x < sfxPlayer.Length; x++)
+                for (int x = 0; x < sfxPlayerList.Count; x++)
                 {
-                    if (!sfxPlayer[x].isPlaying)
+                    if (!sfxPlayerList[x].isPlaying)
                     {
-                        sfxPlayer[x].clip = sfx[i].clip;
-                        sfxPlayer[x].Play();
+                        sfxPlayerList[x].clip = sfx[i].clip;
+                        sfxPlayerList[x].Play();
                         return;
                     }
                     else
                     {
-                        if (sfxPlayer[x].clip == sfx[i].clip)
+                        if (sfxPlayerList[x].clip == sfx[i].clip)
                             return;
                     }
                 }
@@ -253,12 +260,12 @@ public class AudioManager : MonoBehaviour
         {
             if (sfxName == sfx[i].name)
             {
-                for (int x = 0; x < sfxPlayer.Length; x++)
+                for (int x = 0; x < sfxPlayerList.Count; x++)
                 {
-                    if (sfxPlayer[x].isPlaying && sfxPlayer[x].clip == sfx[i].clip)
+                    if (sfxPlayerList[x].isPlaying && sfxPlayerList[x].clip == sfx[i].clip)
                     {
-                        sfxPlayer[x].Stop();
-                        sfxPlayer[x].clip = null;
+                        sfxPlayerList[x].Stop();
+                        sfxPlayerList[x].clip = null;
                     }
                 }
                 return;

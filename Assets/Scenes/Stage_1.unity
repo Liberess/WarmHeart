@@ -81650,6 +81650,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1547195223}
     m_Modifications:
+    - target: {fileID: 977651769, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 336304896613906280, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -81694,37 +81698,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906281, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906281, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906283, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: WindPower
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 336304896613906284, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
       propertyPath: m_Name
       value: WindTrap
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906286, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2673128
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906286, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_Size.y
-      value: 17.674187
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906286, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.049004793
-      objectReference: {fileID: 0}
-    - target: {fileID: 336304896613906286, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
-      propertyPath: m_Offset.y
-      value: 8.175114
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807122e5bfb836b4aaba0e2cfccac2f0, type: 3}
@@ -82078,18 +82054,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 808087438850932497, guid: cbf5c822a8307fe448b636ca00f304f5, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 914842416566907404, guid: cbf5c822a8307fe448b636ca00f304f5, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 914842416566907404, guid: cbf5c822a8307fe448b636ca00f304f5, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: cd413ee8c70cd6f49b94d86ffaf72729, type: 3}
     - target: {fileID: 7039825824299565524, guid: cbf5c822a8307fe448b636ca00f304f5, type: 3}
       propertyPath: bgmNumTxt
       value: 
