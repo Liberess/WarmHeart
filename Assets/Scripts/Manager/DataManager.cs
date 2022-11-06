@@ -70,6 +70,8 @@ public class DataManager : MonoBehaviour
     {
         m_GameData.deathCount = 0;
 
+        m_GameData.isNewGame = true;
+
         for (int i = 0; i < m_GameData.isClears.Length; i++)
             m_GameData.isClears[i] = false;
         

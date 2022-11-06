@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GameData:
     deathCount: 0
-    isClears: 000000
+    isNewGame: 1
+    isClears: 00000000
     bgm: 0
     sfx: 0
     playTime: 0
