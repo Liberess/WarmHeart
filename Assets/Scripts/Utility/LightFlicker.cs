@@ -10,21 +10,29 @@ public class LightFlicker : MonoBehaviour
 
     private float time = 0f;
     [SerializeField, Range(0f, 10f)] private float fadeTime = 0.2f;
-    [SerializeField] private float lightIntensity = 0.7f;
+    [SerializeField, Range(0f, 50f)] private float lightIntensity = 0.7f;
 
     private void Start()
     {
         StartCoroutine(FadeFlow());
     }
 
-    IEnumerator FadeFlow()
+    public void StartFadeFlow()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeFlow());
+    }
+
+    public IEnumerator FadeFlow()
     {
         time = 0f;
+
+        myLight.intensity = 0;
 
         while (myLight.intensity < lightIntensity)
         {
             time += Time.deltaTime / fadeTime;
-            myLight.intensity = Mathf.Lerp(0, 1, time);
+            myLight.intensity = Mathf.Lerp(0, lightIntensity, time);
             yield return null;
         }
 
@@ -35,7 +43,7 @@ public class LightFlicker : MonoBehaviour
         while (myLight.intensity > 0f)
         {
             time += Time.deltaTime / fadeTime;
-            myLight.intensity = Mathf.Lerp(1, 0, time);
+            myLight.intensity = Mathf.Lerp(lightIntensity, 0, time);
             yield return null;
         }
 

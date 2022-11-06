@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "LobbyPlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -15,18 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "74258db5-dba6-4ab9-acac-cf37d339e912",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fly",
-                    "type": "Button",
-                    "id": "d1410768-fccc-413a-a73c-9055b97eeb18",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -48,7 +39,7 @@
                 {
                     "name": "up",
                     "id": "af38ecd5-c299-4239-85bc-70e8379207cf",
-                    "path": "",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -59,7 +50,7 @@
                 {
                     "name": "down",
                     "id": "56f0aaec-676d-412f-b965-cf17a36e236c",
-                    "path": "",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -92,22 +83,11 @@
                 {
                     "name": "",
                     "id": "24b74a6e-e5d0-46ef-b20d-4a34a949b88d",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8112af95-31c5-4652-8764-7e72a23d4e23",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fly",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

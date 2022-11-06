@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GoToStage(int stageNum)
+    {
+        GoToScene(string.Format("Stage_", stageNum.ToString()));
+    }
+
     public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
 
     private void OnSkip()

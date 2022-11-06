@@ -8,7 +8,7 @@ public class GameData
 {
     public int deathCount;
 
-    public bool[] isClears = new bool[3];
+    public bool[] isClears = new bool[4];
 
     public float bgm;
     public float sfx;
