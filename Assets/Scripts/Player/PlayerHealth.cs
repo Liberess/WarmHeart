@@ -7,14 +7,21 @@ public class PlayerHealth : LivingEntity
     private ColoredFlash coloredFlash;
 
     SpriteRenderer spriteRenderer;
+    Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         coloredFlash = GetComponent<ColoredFlash>();
 
         minTimeBetDamaged = 1.5f;
+    }
+
+    private void Start()
+    {
+        DeathAction += () => anim.SetTrigger("doDie");
     }
 
     public override void ApplyDamage(DamageMessage dmgMsg)
