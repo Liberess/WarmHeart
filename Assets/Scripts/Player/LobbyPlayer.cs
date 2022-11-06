@@ -42,6 +42,42 @@ public class LobbyPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// LobbyPlayerInput의 Move 구현
+    /// </summary>
+    private void OnMove(InputValue inputValue)
+    {
+        this.inputValue = inputValue.Get<Vector2>();
+    }
+
+    private void OnInteract()
+    {
+        if (interactStageBtn)
+        {
+            interactStageBtn.Interact();
+            StartCoroutine(GameStartCo());
+        }
+    }
+
+    private IEnumerator GameStartCo()
+    {
+        yield return new WaitForSeconds(1f);
+
+        FadePanel.Instance.FadeIn();
+
+        while(true)
+        {
+            if (FadePanel.Instance.IsCompleteFade)
+                break;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        GameManager.Instance.GoToStage(interactStageBtn.StageNum);
+
+        yield return null;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out StageButton stageBtn))
@@ -62,19 +98,5 @@ public class LobbyPlayer : MonoBehaviour
 
             stageBtn.SetActiveLight(false);
         }
-    }
-
-    /// <summary>
-    /// LobbyPlayerInput의 Move 구현
-    /// </summary>
-    private void OnMove(InputValue inputValue)
-    {
-        this.inputValue = inputValue.Get<Vector2>();
-    }
-
-    private void OnInteract()
-    {
-        if (interactStageBtn)
-            GameManager.Instance.GoToStage(interactStageBtn.StageNum);
     }
 }

@@ -7,6 +7,8 @@ public class FadePanel : MonoBehaviour
 {
     public static FadePanel Instance { get; private set; }
 
+    public bool IsCompleteFade { get; private set; } = false;
+
     [SerializeField] private Image panel;
 
     private float time = 0f;
@@ -32,6 +34,7 @@ public class FadePanel : MonoBehaviour
 
     private IEnumerator FadeInProcess()
     {
+        IsCompleteFade = false;
         panel.gameObject.SetActive(true);
 
         time = 0f;
@@ -45,10 +48,13 @@ public class FadePanel : MonoBehaviour
             panel.color = alpha;
             yield return null;
         }
+
+        IsCompleteFade = true;
     }
 
     private IEnumerator FadeOutProcess()
     {
+        IsCompleteFade = false;
         panel.gameObject.SetActive(true);
 
         time = 0f;
@@ -63,12 +69,14 @@ public class FadePanel : MonoBehaviour
             yield return null;
         }
 
+        IsCompleteFade = true;
         panel.gameObject.SetActive(false);
         yield return null;
     }
 
     private IEnumerator FadeFlow()
     {
+        IsCompleteFade = false;
         panel.gameObject.SetActive(true);
 
         time = 0f;
@@ -95,6 +103,7 @@ public class FadePanel : MonoBehaviour
             yield return null;
         }
 
+        IsCompleteFade = true;
         panel.gameObject.SetActive(false);
         yield return null;
     }

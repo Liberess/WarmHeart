@@ -10,7 +10,7 @@ public class StageButton : MonoBehaviour
     public LightFlicker LightFlicker { get; private set; }
 
     [SerializeField] private int stageNum = 0;
-    public int StageNum { get; private set; }
+    public int StageNum { get => stageNum; }
 
     [SerializeField] private Sprite clearSprite;
 
@@ -50,5 +50,10 @@ public class StageButton : MonoBehaviour
 
         if (active)
             LightFlicker.StartFadeFlow();
+    }
+
+    public void Interact()
+    {
+        anim.SetTrigger("doActive");
     }
 }
