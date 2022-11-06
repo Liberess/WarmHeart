@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 995859afe9f4f17499741197b6e95a8f
+guid: 92d7917b51c2dd646ace3efa56d7d5a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Snow_0
+      name: Breath_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acb63e97700ad6843ac2f73c6cbe4ced
-      internalID: 1409418748
+      spriteID: 7d116cb41c56cc94ea9758ebb7254ecd
+      internalID: -763085849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_1
+      name: Breath_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7ab1cacf05022429228a2dd83235ac
+      internalID: -470777246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breath_2
       rect:
         serializedVersion: 2
         x: 100
         y: 0
-        width: 100
-        height: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5106ddc08eee3a4481af5f89dcb7d2c
-      internalID: -1537417614
+      spriteID: d78689ee22e1bc94694113627ca119ad
+      internalID: -1210138414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_2
+      name: Breath_3
       rect:
         serializedVersion: 2
-        x: 200
+        x: 150
         y: 0
-        width: 100
-        height: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cae56a8e268aef48aed5bd36192fc32
-      internalID: 2050969043
+      spriteID: 26d883e8004f48e43986098c1c926c09
+      internalID: 2078154732
       vertices: []
       indices: 
       edges: []
@@ -189,9 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Snow_2: 2050969043
-      Snow_0: 1409418748
-      Snow_1: -1537417614
+      Breath_2: -1210138414
+      Breath_3: 2078154732
+      Breath_0: -763085849
+      Breath_1: -470777246
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

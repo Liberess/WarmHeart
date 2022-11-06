@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa8a935bf19323479de0fa8cb126c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: 2
-  WindPower: 0.2
+  Direction: 3
+  WindPower: 2
 --- !u!82 &977651769
 AudioSource:
   m_ObjectHideFlags: 0

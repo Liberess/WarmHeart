@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGameCutScene.unity
     guid: 29fa1e50c25f8674d845c9aa2cffa5b3
   - enabled: 1
+    path: Assets/Scenes/Stage1CutScene.unity
+    guid: 558f58e0cb3069c49a7acc654d348fcc
+  - enabled: 1
+    path: Assets/Scenes/Stage2CutScene.unity
+    guid: eaa1e89d001e2e1409a5aa72f8f3ea5a
+  - enabled: 1
+    path: Assets/Scenes/Stage3CutScene.unity
+    guid: ccda36c605202e1408d5319245b9d192
+  - enabled: 1
     path: Assets/Scenes/Stage_1.unity
     guid: 03ad88c3b37c3a047a1bd33754f10a2d
   - enabled: 1

@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveVec;
     [SerializeField] float wind_maxspeed;
 
+    [SerializeField] private Transform breathPos;
+
     public bool XFlip => (moveVec.x > 0) ? true : false;
     public int XDirection => (moveVec.x > 0) ? 1 : -1;
 
@@ -28,6 +30,11 @@ public class PlayerMove : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         moveVec.x = 1;
+    }
+
+    private void Start()
+    {
+        breathPos = transform.Find("BreathPos");
     }
 
     private void Update()
@@ -79,14 +86,14 @@ public class PlayerMove : MonoBehaviour
             if(GetComponent<PlayerFly>().FlyCount == 0)
                 AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.left, ForceMode2D.Impulse);
-            
+            breathPos.localPosition = new Vector3(-0.32f, -0.105f, 0f);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             if (GetComponent<PlayerFly>().FlyCount == 0)
                 AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.right , ForceMode2D.Impulse);
-        
+            breathPos.localPosition = new Vector3(0.20f, -0.105f, 0f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
