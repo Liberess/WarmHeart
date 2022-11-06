@@ -9,6 +9,9 @@ public class StageButton : MonoBehaviour
 {
     public LightFlicker LightFlicker { get; private set; }
 
+    public bool IsInteractable { get; private set; } = false;
+
+
     [SerializeField] private int stageNum = 0;
     public int StageNum { get => stageNum; }
 
@@ -31,6 +34,7 @@ public class StageButton : MonoBehaviour
             GetComponent<Image>().sprite = clearSprite;
             currentLight = lights[0];
             LightFlicker = currentLight.GetComponentInChildren<LightFlicker>();
+            IsInteractable = true;
             currentLight.SetActive(true);
             anim.SetBool("isUnlock", true);
         }

@@ -52,7 +52,7 @@ public class LobbyPlayer : MonoBehaviour
 
     private void OnInteract()
     {
-        if (interactStageBtn)
+        if (interactStageBtn && interactStageBtn.IsInteractable)
         {
             interactStageBtn.Interact();
             StartCoroutine(GameStartCo());

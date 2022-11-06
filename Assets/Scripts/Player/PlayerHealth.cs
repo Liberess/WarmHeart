@@ -21,8 +21,11 @@ public class PlayerHealth : LivingEntity
     {
         if (IsDamageable)
         {
-            coloredFlash.Duration = minTimeBetDamaged;
+            coloredFlash.Duration = 0.5f;
             coloredFlash.Flash();
+
+            var cam = FindObjectOfType<CamShake>();
+            cam.VibrateForTime(0.5f, 0.1f);
         }
         
         base.ApplyDamage(dmgMsg);

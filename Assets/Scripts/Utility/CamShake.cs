@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CamShake : MonoBehaviour
 {
-    private float shakeAmount = 0f;
-    private float shakeTime = 0f;
+    [SerializeField, Range(0.0f, 5.0f)] private float shakeAmount = 1.0f;
+    [SerializeField, Range(0.0f, 5.0f)] private float shakeTime = 1.0f;
 
     private bool isShake = false;
 
@@ -26,7 +26,7 @@ public class CamShake : MonoBehaviour
         }
     }
 
-    public void VibrateForTime(float time, float power)
+    public void VibrateForTime(float time = 1.0f, float power = 1.0f)
     {
         isShake = true;
         shakeTime = time;

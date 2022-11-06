@@ -7,6 +7,8 @@ public abstract class Bullet : MonoBehaviour
 {
     [SerializeField] protected float fireMoveSpeed = 3f;
     [SerializeField] protected float destoryTime = 10f;
+
+    [SerializeField] protected GameObject effectPrefab;
     protected DirectionType dircType;
     protected DamageMessage dmgMsg;
 
@@ -47,6 +49,9 @@ public abstract class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (effectPrefab != null)
+            Instantiate(effectPrefab, transform.position, Quaternion.identity);
+
         OnEnter(collider);
     }
 }

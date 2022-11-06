@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SceneName = SceneManager.GetActiveScene().name;
+
+        if(SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            FadePanel.Instance.FadeOut();
+        }
     }
 
     private void Update()
@@ -77,6 +82,14 @@ public class GameManager : MonoBehaviour
 
     private void OnPressBtn()
     {
-        SceneManager.LoadScene("Lobby");
+        if(DataManager.Instance.GameData.isNewGame)
+        {
+            DataManager.Instance.GameData.isNewGame = false;
+            SceneManager.LoadScene("NewGameCutScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Lobby");
+        }
     }
 }
