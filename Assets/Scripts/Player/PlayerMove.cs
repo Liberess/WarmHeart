@@ -100,13 +100,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.TryGetComponent(out WindBlow windblow))
         {
-            switch (windblow.Direction)
+            switch (windblow.DircType)
             {
-                case 2:
+                case EDirectionType.Right:
                     left_maxspeed -= wind_maxspeed;
                     right_maxspeed += wind_maxspeed;
                     break;
-                case 3:
+                case EDirectionType.Left:
                     left_maxspeed += wind_maxspeed;
                     right_maxspeed -= wind_maxspeed;
                     break;

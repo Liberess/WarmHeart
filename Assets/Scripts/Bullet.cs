@@ -11,7 +11,7 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected float destoryTime = 10f;
 
     [SerializeField] protected GameObject effectPrefab;
-    protected DirectionType dircType;
+    protected Vector3 dircVec;
     protected DamageMessage dmgMsg;
 
     protected abstract void OnEnter(Collider2D collider);
@@ -24,33 +24,41 @@ public abstract class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.right * fireMoveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * fireMoveSpeed * Time.deltaTime);
     }
 
-    public void SetupBullet(DamageMessage _dmgMsg, DirectionType _dircType)
+    public void SetupBullet(DamageMessage _dmgMsg, Vector3 _dircVec)
     {
         dmgMsg = _dmgMsg;
-        dircType = _dircType;
+        dircVec = _dircVec;
 
         gameMgr = GameManager.Instance;
         Destroy(gameObject, destoryTime);
 
-        switch (dircType)
-        {
-            case DirectionType.Up:
-                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-                break;
-            case DirectionType.Down:
-                transform.rotation = Quaternion.Euler(0f, 0f, -90f);
-                break;
-            case DirectionType.Left:
-                transform.rotation = Quaternion.Euler(0f, -180, 0f);
-                transform.Translate(1, 0, 0);
-                break;
-            case DirectionType.Right:
-                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                break;
-        }
+        if (_dircVec == Vector3.up)
+            transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        else if (_dircVec == Vector3.down)
+            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+        else if (_dircVec == Vector3.left)
+            transform.rotation = Quaternion.Euler(0f, -180, 0f);
+        else if (_dircVec == Vector3.right)
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        /*        switch (dircType)
+                {
+                    case DirectionType.Up:
+                        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                        break;
+                    case DirectionType.Down:
+                        transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+                        break;
+                    case DirectionType.Left:
+                        transform.rotation = Quaternion.Euler(0f, -180, 0f);
+                        transform.Translate(1, 0, 0);
+                        break;
+                    case DirectionType.Right:
+                        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        break;
+                }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
