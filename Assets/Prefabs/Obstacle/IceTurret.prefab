@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087404275234508842}
   - component: {fileID: 2087404275234508841}
-  - component: {fileID: 1972101226448341700}
+  - component: {fileID: 2087404275234508843}
   m_Layer: 0
   m_Name: IceTurret
   m_TagString: Untagged
@@ -25,15 +25,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087404275234508840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 8.5094, y: 3.1857, z: 0}
   m_LocalScale: {x: 3.02434, y: 2.917713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1215874398424756606}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &2087404275234508841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1972101226448341700
+--- !u!114 &2087404275234508843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceBulletPrefab: {fileID: 9150721267025719862, guid: 0e33d9fbd3f0bcc49b9b5234f86ff950, type: 3}
   responTime: 2
-  dircType: 0
-  shotPos: {fileID: 1215874398424756606}
+  dircType: 2
+  shotPos: {fileID: 0}
 --- !u!1 &3406140140696838923
 GameObject:
   m_ObjectHideFlags: 0

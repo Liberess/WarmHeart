@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class IceTurret : MonoBehaviour
+public enum DirectionType { Up, Down, Left, Right }
+
+public class IceRoket : MonoBehaviour
 {
     private GameManager gameMgr;
 
     [SerializeField] private GameObject iceBulletPrefab;
     [SerializeField, Range(0f, 10f)] private float responTime = 2f;
-    [SerializeField] private EDirectionType dircType;
+    [SerializeField] private DirectionType dircType;
 
     [SerializeField] private Transform shotPos;
 
@@ -22,14 +23,6 @@ public class IceTurret : MonoBehaviour
         StartCoroutine(CreateBulletCo());
     }
 
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.up * 2f);
-    }
-#endif
-
     private IEnumerator CreateBulletCo()
     {
         WaitForSeconds delay = new WaitForSeconds(responTime);
@@ -37,7 +30,7 @@ public class IceTurret : MonoBehaviour
         DamageMessage dmg;
         dmg.damager = gameObject;
         dmg.damageAmount = 10;
-        dmg.hitPoint = shotPos.position;
+        dmg.hitPoint = transform.position;
 
         while (true)
         {
@@ -48,7 +41,7 @@ public class IceTurret : MonoBehaviour
 
             var bullet = Instantiate(iceBulletPrefab, shotPos.position, Quaternion.identity)
                 .GetComponent<IceBullet>();
-            bullet.SetupBullet(dmg, transform.up);
+            bullet.SetupBullet(dmg, dircType);
         }
 
         yield return null;

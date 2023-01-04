@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6345338568972098185}
   - component: {fileID: 6345338568972098186}
   - component: {fileID: 6820831031385742295}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ThornTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

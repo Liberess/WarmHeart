@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 506877208985436835}
   - component: {fileID: 506877208985436834}
   - component: {fileID: 261773546772053490}
-  - component: {fileID: 146706611038908258}
-  - component: {fileID: 2371994690702753699}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: WindTrap_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,46 +182,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &146706611038908258
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506877208985436839}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.034122884, y: -0.12193233}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 1.23}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.288293, y: 0.98613536}
-  m_EdgeRadius: 0
---- !u!114 &2371994690702753699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506877208985436839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baa8a935bf19323479de0fa8cb126c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Direction: 1
-  WindPower: 0.1
 --- !u!1 &5736538400671161266
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +193,7 @@ GameObject:
   - component: {fileID: 5736538400671161271}
   - component: {fileID: 5736538400671161264}
   - component: {fileID: 5736538400671161265}
+  - component: {fileID: 5736538400671161269}
   - component: {fileID: 5736538400671161270}
   m_Layer: 11
   m_Name: Wind_0
@@ -330,6 +289,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5736538400671161269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736538400671161266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa8a935bf19323479de0fa8cb126c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Direction: 0
+  WindPower: 0.1
 --- !u!61 &5736538400671161270
 BoxCollider2D:
   m_ObjectHideFlags: 0
