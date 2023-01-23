@@ -13,17 +13,19 @@ public class IdleState : IState
 
     void IState.Update()
     {
-
+        ms.GetComponent<SpriteRenderer>().flipX = ms.MonsterWay ? true : false;
+        ms.transform.Translate((ms.MonsterWay ? 1 : -1) * Time.deltaTime, 0, 0);
+        if (ms.transform.position.x <= ms.MonsterLeft) ms.MonsterWay = true;
+        if (ms.transform.position.x >= ms.MonsterRight) ms.MonsterWay = false;
+        if (ms.PlayerIn)
+            ms.SetState(new AttackState());
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log(0);
-            //ms.SetState(new MoveState());
+            ms.GetComponent<Animator>().SetBool("Die", true);
         }
-
     }
     void IState.OnExit()
     {
-
 
     }
 

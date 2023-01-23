@@ -6,9 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rigid;
-    [SerializeField, Range(0f, 5f)] private float Movespeed;
+    [SerializeField, Range(-5f, 5f)] public float Movespeed=0;
 
-    private Vector2 inputValue;
     private Vector2 moveVec;
     [SerializeField] float wind_maxspeed;
 
@@ -19,12 +18,8 @@ public class PlayerMove : MonoBehaviour
 
     private Animator anim;
     private SpriteRenderer sprite;
-    float left_maxspeed;
-    float right_maxspeed;
     private void Awake()
     {
-        left_maxspeed = Movespeed;
-        right_maxspeed = Movespeed;
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -39,17 +34,17 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (rigid.velocity.x < left_maxspeed * (-1))//哭率
+        if (rigid.velocity.x > Movespeed)//哭率
         {
-            rigid.velocity = new Vector2(left_maxspeed * (-1), rigid.velocity.y);
+            rigid.velocity = new Vector2(Movespeed , rigid.velocity.y);
         }
-        if (rigid.velocity.x > right_maxspeed)//坷弗率
+        if (rigid.velocity.x < Movespeed)//坷弗率
         {
-            rigid.velocity = new Vector2(right_maxspeed, rigid.velocity.y);
+            rigid.velocity = new Vector2(Movespeed, rigid.velocity.y);
         }
-        if (inputValue != Vector2.zero)
+        if (rigid.velocity != Vector2.zero)
         {
-            moveVec = new Vector2 (inputValue.x, inputValue.y);
+            moveVec = rigid.velocity;
             anim.SetBool("isWalk", true);
 
             sprite.flipX = XFlip;
@@ -62,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         if (GetComponent<PlayerFly>().FlyCount == 1)
         {
             AudioManager.Instance.StopSFX(SFXNames.FootStep);
-            float roll = rigid.velocity.x > 0 ? 24 * (-rigid.velocity.x / right_maxspeed) : 24 * (-rigid.velocity.x / left_maxspeed);
+            float roll = rigid.velocity.x > 0 ? 24 * (-rigid.velocity.x / Movespeed) : 24 * (-rigid.velocity.x / Movespeed*-1);
             transform.rotation = Quaternion.Euler(0f, 0f, roll);
         }
         else
@@ -72,51 +67,27 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnMove(InputValue inputValue)
-    {
-        this.inputValue = inputValue.Get<Vector2>();
-    }
   
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void JoyMove()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Movespeed>0)
         {
-            if(GetComponent<PlayerFly>().FlyCount == 0)
+           // sprite.flipX = true;
+            if (GetComponent<PlayerFly>().FlyCount == 0)
                 AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.left, ForceMode2D.Impulse);
             breathPos.localPosition = new Vector3(-0.32f, -0.105f, 0f);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Movespeed<0)
         {
+          //  sprite.flipX = false;
             if (GetComponent<PlayerFly>().FlyCount == 0)
                 AudioManager.Instance.PlaySFX(SFXNames.FootStep);
             rigid.AddForce(Vector2.right , ForceMode2D.Impulse);
             breathPos.localPosition = new Vector3(0.20f, -0.105f, 0f);
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out WindBlow windblow))
-        {
-            switch (windblow.Direction)
-            {
-                case 2:
-                    left_maxspeed -= wind_maxspeed;
-                    right_maxspeed += wind_maxspeed;
-                    break;
-                case 3:
-                    left_maxspeed += wind_maxspeed;
-                    right_maxspeed -= wind_maxspeed;
-                    break;
-            }
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        left_maxspeed = Movespeed;
-        right_maxspeed = Movespeed;
     }
 
 }

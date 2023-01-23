@@ -1,3 +1,7 @@
+public enum Monstertype
+{
+    MGROUND,MFLY,MNOMAL,MBOMB,MTURRET
+};
 public interface IState
 { 
 

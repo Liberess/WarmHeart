@@ -9,6 +9,7 @@ public class PlayerFly : MonoBehaviour
     [SerializeField, Range(0f, 100f)] public float FlyPower;
     public int FlyCount=0;
     public GameObject Fire;
+    public bool Isfly;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class PlayerFly : MonoBehaviour
         {
             FlyPower = FlyPower + Time.deltaTime * 10 >= 100 ? 100 : FlyPower + Time.deltaTime * 10;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Isfly)
         {
             if (rigid.gravityScale == 0.3f)
                 rigid.gravityScale = 1;

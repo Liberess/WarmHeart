@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public abstract class Bullet : MonoBehaviour
 {
     private GameManager gameMgr;
-
     [SerializeField] protected float fireMoveSpeed = 3f;
     [SerializeField] protected float destoryTime = 10f;
 
