@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour, IItem
 {
+    [SerializeField] private EStage stage;
     [SerializeField, Range(0, 500)] private int cureAmount = 10;
 
     public void OnUse()
     {
-        GameManager.Instance.PickupKey();
+        GameManager.Instance.PickupKey(stage);
         Destroy(gameObject);
     }
 

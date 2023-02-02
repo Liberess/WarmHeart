@@ -14,10 +14,17 @@ public class StageKeyDoor : MonoBehaviour
 
     public void OnEnter()
     {
-        if (GameManager.Instance.IsKey)
+        /*if (GameManager.Instance.IsKey)
         {
             StartCoroutine(OpenDoorCo());
-        }
+        }*/
+    }
+
+    public void OpenDoor()
+    {
+        Debug.Log("open door");
+        gameObject.SetActive(false);
+        //StartCoroutine(OpenDoorCo());
     }
 
     private IEnumerator OpenDoorCo()

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Obstacle : MonoBehaviour
 {
-    abstract public void OnEnter();
-    abstract public void OnStay();
-    abstract public void OnExit();
-    abstract public void OnInteract();
+    public abstract void OnEnter();
+    public abstract void OnStay();
+    public abstract void OnExit();
+    public abstract void OnInteract();
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -9,8 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Space(5), Header("==== InGame ====")]
-    [SerializeField] private bool isKey = false;
-    public bool IsKey { get => isKey; }
+    [SerializeField] private List<int> keyAmountList = new List<int>() { 0, 0, 0};
+    public List<int> KeyAmountList => keyAmountList;
+
+    [SerializeField] private List<SpiritStatue> spiritStatueList = new List<SpiritStatue>();
+    [SerializeField] private List<StageKeyDoor> stageKeyDoorList = new List<StageKeyDoor>();
 
     public string SceneName { get; private set; }
 
@@ -35,7 +39,11 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        isKey = false;
+        if (spiritStatueList.Count <= 0)
+            spiritStatueList = FindObjectsOfType<SpiritStatue>().ToList();
+
+        if (stageKeyDoorList.Count <= 0)
+            stageKeyDoorList = FindObjectsOfType<StageKeyDoor>().ToList();
 
         OnGameOverAction -= () => IsGamePlay = false;
         OnGameOverAction += () => IsGamePlay = false;
@@ -58,7 +66,15 @@ public class GameManager : MonoBehaviour
 
     public void SetGamePlayPause(bool active) => IsGamePlay = !active;
 
-    public void PickupKey() => isKey = true;
+    public void PickupKey(EStage stage)
+    {
+        int index = (int)stage;
+        ++keyAmountList[index];
+
+        spiritStatueList[index].UpdateSpiritStatue(keyAmountList[index]);
+    }
+
+    public void OpenStageDoor(int index) => stageKeyDoorList[index].OpenDoor();
 
     public void OnClickUIButton(UIButtonType uIButtonType)
     {
