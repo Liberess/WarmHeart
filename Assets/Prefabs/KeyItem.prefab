@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5870050104205268338}
   - component: {fileID: 5870050104205268340}
   - component: {fileID: 5870050104205268337}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: KeyItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,4 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fbca11c20112d499eabb315cce2ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: 0
   cureAmount: 10

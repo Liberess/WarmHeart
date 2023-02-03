@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4487822095077726770}
   - component: {fileID: 4487822095077726768}
   - component: {fileID: 4487822095077726771}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487822095195891730}
   - component: {fileID: 4487822095195891731}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RangeLight2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4934,7 +4934,7 @@ GameObject:
   - component: {fileID: 4487822095579071037}
   - component: {fileID: 4487822095579071036}
   - component: {fileID: 736596804}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LightStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4998,7 +4998,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 712406883
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 574852951f982b24393a3f9da5564f33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5036,7 +5036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487822096923386012}
   - component: {fileID: 4487822096923386013}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PointLight2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
