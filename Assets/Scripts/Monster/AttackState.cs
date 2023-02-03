@@ -13,16 +13,16 @@ public class AttackState : IState
 
     void IState.Update()
     {
-        if (ms.PlayerIn)
+        if (Vector2.Distance(ms.transform.position, ms.Player.transform.position) < ms.MonsterAttackSize)
         {
-            if (Mathf.Abs(ms.transform.position.x - ms.PlayerX) < 2)
+            if (Mathf.Abs(ms.transform.position.x - ms.Player.transform.position.x) < 2)
             {
                 ms.GetComponent<Animator>().SetBool("Attack", true);
             }
             else
                 ms.GetComponent<Animator>().SetBool("Attack", false);
-            ms.GetComponent<SpriteRenderer>().flipX = ms.transform.position.x - ms.PlayerX <= 0 ? true : false;
-            ms.transform.Translate((ms.transform.position.x - ms.PlayerX <= 0 ? 1 : -1) * Time.deltaTime, 0, 0);
+            ms.GetComponent<SpriteRenderer>().flipX = ms.transform.position.x - ms.Player.transform.position.x <= 0 ? true : false;
+            ms.transform.Translate((ms.transform.position.x - ms.Player.transform.position.x <= 0 ? 1 : -1) * Time.deltaTime, 0, 0);
         }
         else
             ms.SetState(new IdleState());

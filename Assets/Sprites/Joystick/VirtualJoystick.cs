@@ -10,7 +10,7 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
     Vector2 origin_p;
     Vector2 last_p;
     [SerializeField, Range(0, 100)] float LeverdistanceX;
-    [SerializeField, Range(0, 100)] float LeverdistanceY;
+    [SerializeField, Range(0, 200)] float LeverdistanceY;
     bool Isfly;
     private void Start()
     {
@@ -46,7 +46,7 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
             last_p.y = 0;
             Isfly = false;
         }
-        joystick.GetComponent<RectTransform>().anchoredPosition = new Vector2(last_p.x / 2, last_p.y/2);
+        joystick.GetComponent<RectTransform>().anchoredPosition = new Vector2(last_p.x / 2, last_p.y/4);
         
     }
 

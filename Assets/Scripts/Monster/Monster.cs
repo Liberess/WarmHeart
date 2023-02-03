@@ -8,15 +8,14 @@ public class Monster : LivingEntity
     private IState currentState;
     protected Monstertype monstertype = Monstertype.MFLY;
     public bool PlayerIn=false;
-    public float PlayerX;
-    public float PlayerY;
 
     public float MonsterLeft;
     public float MonsterRight;
     public float MonsterRoundSize;
+    public float MonsterAttackSize;
     public bool MonsterWay;
 
-    GameObject Player;
+    public GameObject Player;
 
     private void Start()
     {
@@ -33,6 +32,12 @@ public class Monster : LivingEntity
     private void Update()
     {
         currentState.Update();
+        if (CurrentHp == 0)
+        {
+            SetState(new DeathState());
+            Debug.Log(0);
+        }
+        
     }
     public void SetState(IState nextState)
 
@@ -45,27 +50,13 @@ public class Monster : LivingEntity
         currentState = nextState;
         currentState.OnEnter(this);
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            PlayerIn = true;
-            PlayerX = collision.transform.position.x;
-            PlayerY = collision.transform.position.y;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-            PlayerIn = false;
-    }
     void die()
     {
         Destroy(gameObject);
     }
     void PlayerAttack()
     {
-        if (Mathf.Abs(transform.position.x - PlayerX) < 2)
+        if (Mathf.Abs(transform.position.x - Player.transform.position.x) < 2)
         {
             DamageMessage dmg;
             dmg.damager = gameObject;

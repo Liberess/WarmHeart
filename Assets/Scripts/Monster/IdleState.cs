@@ -17,12 +17,8 @@ public class IdleState : IState
         ms.transform.Translate((ms.MonsterWay ? 1 : -1) * Time.deltaTime, 0, 0);
         if (ms.transform.position.x <= ms.MonsterLeft) ms.MonsterWay = true;
         if (ms.transform.position.x >= ms.MonsterRight) ms.MonsterWay = false;
-        if (ms.PlayerIn)
+        if (Vector2.Distance( ms.transform.position , ms.Player.transform.position) < ms.MonsterAttackSize)
             ms.SetState(new AttackState());
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ms.GetComponent<Animator>().SetBool("Die", true);
-        }
     }
     void IState.OnExit()
     {
