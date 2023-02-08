@@ -18,8 +18,11 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
     }
     private void Update()
     {
-        Player.GetComponent<PlayerMove>().Movespeed = joystick.GetComponent<RectTransform>().anchoredPosition.x / 10;
-        Player.GetComponent<PlayerMove>().JoyMove();
+        if (!Player.GetComponent<PlayerMove>().Abnormalstatus)
+        {
+            Player.GetComponent<PlayerMove>().Movespeed = joystick.GetComponent<RectTransform>().anchoredPosition.x / 4f;
+            Player.GetComponent<PlayerMove>().JoyMove();
+        }
         if (Isfly)
         {
             joystickbase.GetComponent<RectTransform>().anchoredPosition = new Vector2(origin_p.x, origin_p.y+LeverdistanceY);

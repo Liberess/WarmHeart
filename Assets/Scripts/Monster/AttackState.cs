@@ -15,7 +15,7 @@ public class AttackState : IState
     {
         if (Vector2.Distance(ms.transform.position, ms.Player.transform.position) < ms.MonsterAttackSize)
         {
-            if (Mathf.Abs(ms.transform.position.x - ms.Player.transform.position.x) < 2)
+            if (Mathf.Abs(ms.transform.position.x - ms.Player.transform.position.x) < 3)
             {
                 ms.GetComponent<Animator>().SetBool("Attack", true);
             }

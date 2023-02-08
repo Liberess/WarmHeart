@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
             shotPos = transform.Find("ShotPos");
     }
 
-    private void OnAttack()
+    public void OnAttack()
     {
         if (!playerControl.PlayerHealth.IsDead && IsAttack)
         { 

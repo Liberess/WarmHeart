@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rigid;
     [SerializeField, Range(-5f, 5f)] public float Movespeed=0;
+    [SerializeField, Range(0f, 5f)] public float Flyforce;
 
     private Vector2 moveVec;
     [SerializeField] float wind_maxspeed;
@@ -15,6 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool XFlip => (moveVec.x > 0) ? true : false;
     public int XDirection => (moveVec.x > 0) ? 1 : -1;
+    public bool Abnormalstatus=false;
 
     private Animator anim;
     private SpriteRenderer sprite;
@@ -34,6 +36,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (rigid.velocity.y > Flyforce)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, Flyforce);
+        }
         if (rigid.velocity.x > Movespeed)//¿ÞÂÊ
         {
             rigid.velocity = new Vector2(Movespeed , rigid.velocity.y);

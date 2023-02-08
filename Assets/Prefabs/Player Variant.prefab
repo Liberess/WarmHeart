@@ -300,10 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e682ba02f9acba4fb7e0f376eee643b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Flyforce: 3
   FlyPower: 100
   FlyCount: 0
   Fire: {fileID: 8188339068892260451}
+  Isfly: 0
 --- !u!114 &1258716516509486699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movespeed: 3
+  Flyforce: 3
   wind_maxspeed: 1
+  breathPos: {fileID: 0}
+  Abnormalstatus: 0
 --- !u!114 &5195959641475975214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +460,7 @@ MonoBehaviour:
   - {x: -0.1252594, y: -0.79946995, z: 0}
   m_ShapePathHash: -1009749289
   m_Mesh: {fileID: 0}
-  m_InstanceId: 145242
+  m_InstanceId: 100560
 --- !u!1 &3130513300188615577
 GameObject:
   m_ObjectHideFlags: 0

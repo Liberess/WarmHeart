@@ -7,7 +7,6 @@ public class Monster : LivingEntity
     
     private IState currentState;
     protected Monstertype monstertype = Monstertype.MFLY;
-    public bool PlayerIn=false;
 
     public float MonsterLeft;
     public float MonsterRight;
@@ -35,7 +34,6 @@ public class Monster : LivingEntity
         if (CurrentHp == 0)
         {
             SetState(new DeathState());
-            Debug.Log(0);
         }
         
     }
@@ -56,7 +54,7 @@ public class Monster : LivingEntity
     }
     void PlayerAttack()
     {
-        if (Mathf.Abs(transform.position.x - Player.transform.position.x) < 2)
+        if (Mathf.Abs(transform.position.x - Player.transform.position.x) < 2.2f && Player.transform.position.y<transform.position.y)
         {
             DamageMessage dmg;
             dmg.damager = gameObject;

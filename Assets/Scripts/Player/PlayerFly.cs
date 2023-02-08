@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerFly : MonoBehaviour
 {
     Rigidbody2D rigid;
-    [SerializeField, Range(0f, 5f)] private float Flyforce;
+    
     [SerializeField, Range(0f, 100f)] public float FlyPower;
     public int FlyCount=0;
     public GameObject Fire;
@@ -22,10 +22,7 @@ public class PlayerFly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rigid.velocity.y > Flyforce)
-        {
-            rigid.velocity = new Vector2(rigid.velocity.x, Flyforce);
-        }
+        
         if (FlyCount == 0 && FlyPower < 100)
         {
             FlyPower = FlyPower + Time.deltaTime * 10 >= 100 ? 100 : FlyPower + Time.deltaTime * 10;
