@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject audioPanel;
+    [SerializeField] private GameObject manualPanel;
+    [SerializeField] private GameObject mimimapPanel;
 
     [Space(5), Header("==== InGame ====")]
     [SerializeField] private List<int> keyAmountList = new List<int>() { 0, 0, 0};
@@ -49,21 +54,6 @@ public class GameManager : MonoBehaviour
         OnGameOverAction += () => IsGamePlay = false;
     }
 
-    private void Update()
-    {
-        if(Input.GetButtonDown("Cancel"))
-        {
-            if(AudioManager.Instance.SetActiveOptionPanel())
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
-        }
-    }
-
     public void SetGamePlayPause(bool active) => IsGamePlay = !active;
 
     public void PickupKey(EStage stage)
@@ -75,24 +65,74 @@ public class GameManager : MonoBehaviour
     }
 
     public void OpenStageDoor(int index) => stageKeyDoorList[index].OpenDoor();
-
-    public void OnClickUIButton(UIButtonType uIButtonType)
+    
+    public void FlipMenuPanel()
     {
-        switch (uIButtonType.EUIButtonType)
+        if (!menuPanel)
+            return;
+        
+        if(menuPanel.activeSelf)
+        {
+            menuPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            menuPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void PauseGameTime(bool isPause) => Time.timeScale = isPause ? 0f : 1f;
+
+    public void OnClickUIButton(UIButtonType uiBtnType)
+    {
+        switch (uiBtnType.EUIButtonType)
         {
             case EUIButtonType.Restart:
                 Time.timeScale = 1f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
+            
             case EUIButtonType.Resume:
-                Time.timeScale = 1f;
-                AudioManager.Instance.SetActiveOptionPanel();
+                if (uiBtnType.transform.parent.name == "Grid")
+                {
+                    FlipMenuPanel();
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                    uiBtnType.transform.parent.parent.gameObject.SetActive(false);
+                }
                 break;
+            
             case EUIButtonType.Lobby:
                 GoToScene("Lobby");
                 break;
+            
             case EUIButtonType.Quit:
                 Application.Quit();
+                break;
+            
+            case EUIButtonType.Close:
+                FlipMenuPanel();
+                uiBtnType.transform.parent.parent.gameObject.SetActive(false);
+                break;
+            
+            case EUIButtonType.Audio:
+                audioPanel.SetActive(true);
+                menuPanel.SetActive(false);
+                break;
+            
+            case EUIButtonType.Manual:
+                manualPanel.SetActive(true);
+                menuPanel.SetActive(false);
+                break;
+            
+            case EUIButtonType.Minimap:
+                PauseGameTime(true);
+                mimimapPanel.SetActive(true);
+                menuPanel.SetActive(false);
                 break;
         }
     }
@@ -103,11 +143,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
-
-    private void OnSkip()
-    {
-        SceneManager.LoadScene("Lobby");
-    }
 
     private void OnPressBtn()
     {
