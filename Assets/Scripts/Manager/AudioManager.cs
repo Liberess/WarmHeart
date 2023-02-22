@@ -36,7 +36,7 @@ public enum SFXNames
 
 public class AudioManager : MonoBehaviour
 {
-    #region ÀÎ½ºÅÏ½ºÈ­
+    #region ï¿½Î½ï¿½ï¿½Ï½ï¿½È­
     private static AudioManager m_Instance;
     public static AudioManager Instance
     {
@@ -59,7 +59,6 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     [Header("== Setting Audio Controller ==")]
-    [SerializeField] private GameObject optionPanel;
     [SerializeField] private AudioMixer masterMixer;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
@@ -93,10 +92,7 @@ public class AudioManager : MonoBehaviour
     [ContextMenu("Setup Audio UI")]
     public void SetAudioObjects()
     {
-        if (optionPanel == null)
-            optionPanel = GameObject.Find("OptionCanvas").transform.GetChild(0).gameObject;
-
-        var parent = optionPanel.transform.GetChild(0).gameObject;
+        var parent = GameObject.Find("InGameCanvas").transform.Find("AudioPanel").GetChild(0).gameObject;
 
         if (bgmSlider == null || sfxSlider == null)
         {
@@ -106,8 +102,8 @@ public class AudioManager : MonoBehaviour
 
         if (bgmNumTxt == null || sfxNumTxt == null)
         {
-            bgmNumTxt = bgmSlider.transform.Find("NumTxt").GetComponent<Text>();
-            sfxNumTxt = sfxSlider.transform.Find("NumTxt").GetComponent<Text>();
+            bgmNumTxt = bgmSlider.transform.Find("BGMNumTxt").GetComponent<Text>();
+            sfxNumTxt = sfxSlider.transform.Find("SFXNumTxt").GetComponent<Text>();
         }
     }
 
@@ -275,23 +271,6 @@ public class AudioManager : MonoBehaviour
         }
     }
     #endregion
-
-    public bool SetActiveOptionPanel()
-    {
-        if (optionPanel == null)
-            return false;
-
-        if(optionPanel.activeSelf)
-        {
-            optionPanel.SetActive(false);
-            return false;
-        }
-        else
-        {
-            optionPanel.SetActive(true);
-            return true;
-        }
-    }
 
     public AudioClip GetBGMClip(BGMNames bgmName) => bgm[(int)bgmName].clip;
     public AudioClip GetSFXClip(SFXNames sfxName) => bgm[(int)sfxName].clip;

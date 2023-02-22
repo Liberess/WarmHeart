@@ -127,9 +127,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skip",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "1c36f39a-3f02-4626-96db-0fca74e4e464",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "adc41d4a-8a22-4adf-be79-1aafb022c57e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -151,11 +160,33 @@
                 {
                     "name": "",
                     "id": "08d6986a-7707-43fd-a22a-ca6741b01d6a",
-                    "path": "<Keyboard>/escape",
+                    "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f1707ee-945c-442e-bb43-358bb3a5002b",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce244172-c3fc-4846-9653-03733719ac7c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -184,6 +215,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }
