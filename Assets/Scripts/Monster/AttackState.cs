@@ -29,6 +29,6 @@ public class AttackState : IState
     }
     void IState.OnExit()
     {
-
+        ms.GetComponent<Animator>().SetBool("Attack", false);
     }
 }

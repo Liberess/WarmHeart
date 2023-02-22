@@ -11,8 +11,11 @@ public class FireBall : Bullet
 
     protected override void OnEnter(Collider2D collider)
     {
+        
         if (!collider.CompareTag("Player"))
         {
+            if (collider.CompareTag("Monster"))
+                collider.GetComponent<Monster>().SetState(new ShotState());
             if (collider.TryGetComponent(out LivingEntity livingEntity))
                 livingEntity.ApplyDamage(dmgMsg);
 
