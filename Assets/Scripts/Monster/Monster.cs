@@ -6,6 +6,7 @@ public class Monster : LivingEntity
 {
     
     private IState currentState;
+    private int Hp;
     protected Monstertype monstertype = Monstertype.MFLY;
 
     public float MonsterLeft;
@@ -18,6 +19,7 @@ public class Monster : LivingEntity
 
     private void Start()
     {
+        Hp = CurrentHp;
         Player = GameObject.FindWithTag("Player");
         MonsterWay = true;
         MonsterLeft = transform.position.x - MonsterRoundSize;
@@ -31,10 +33,6 @@ public class Monster : LivingEntity
     private void Update()
     {
         currentState.Update();
-        if (CurrentHp == 0)
-        {
-            SetState(new DeathState());
-        }
         
     }
     public void SetState(IState nextState)
@@ -47,6 +45,13 @@ public class Monster : LivingEntity
 
         currentState = nextState;
         currentState.OnEnter(this);
+    }
+    void die_check()
+    {
+        if (CurrentHp == 0)
+            SetState(new DeathState());
+        else
+            SetState(new IdleState());
     }
     void die()
     {
