@@ -20,14 +20,18 @@ public class TouchablePanel : MonoBehaviour, IPointerClickHandler
             
             case ETouchablePanelType.Sub:
                 OnTouchAction += () => GameManager.Instance.FlipMenuPanel();
-                OnTouchAction += () => gameObject.SetActive(false);
                 break;            
             
             case ETouchablePanelType.Minimap:
                 OnTouchAction += () => GameManager.Instance.PauseGameTime(false);
-                OnTouchAction += () => gameObject.SetActive(false);
+                break;
+            
+            case ETouchablePanelType.Dialog:
+                OnTouchAction += () => GameManager.Instance.PauseGameTime(false);
                 break;
         }
+        
+        OnTouchAction += () => gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -51,8 +55,6 @@ public class TouchablePanel : MonoBehaviour, IPointerClickHandler
             if (results[0].gameObject && results[0].gameObject != this.gameObject &&
                 results[0].gameObject.layer == LayerMask.NameToLayer("UI"))
                 return true;
-            else
-                return false;
         }
 
         return false;

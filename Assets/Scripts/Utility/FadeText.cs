@@ -18,13 +18,13 @@ public class FadeText : MonoBehaviour
     {
         txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 0);
 
-        WaitForSeconds delayTime = new WaitForSeconds(0.5f);
+        WaitForSecondsRealtime delayTime = new WaitForSecondsRealtime(0.5f);
 
         while (true)
         {
             while (txt.color.a < 1.0f)
             {
-                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a + (Time.deltaTime / fadeSpeed));
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a + (Time.unscaledTime / fadeSpeed));
                 yield return null;
             }
 
@@ -32,7 +32,7 @@ public class FadeText : MonoBehaviour
 
             while (txt.color.a > 0.0f)
             {
-                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a - (Time.deltaTime / fadeSpeed));
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a - (Time.unscaledTime / fadeSpeed));
                 yield return null;
             }
 
@@ -46,7 +46,7 @@ public class FadeText : MonoBehaviour
 
         while (txt.color.a < 1.0f)
         {
-            txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a + (Time.deltaTime / fadeSpeed));
+            txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a + (Time.unscaledTime / fadeSpeed));
             yield return null;
         }
     }
@@ -57,7 +57,7 @@ public class FadeText : MonoBehaviour
 
         while (txt.color.a > 0.0f)
         {
-            txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a - (Time.deltaTime / fadeSpeed));
+            txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, txt.color.a - (Time.unscaledTime / fadeSpeed));
             yield return null;
         }
     }

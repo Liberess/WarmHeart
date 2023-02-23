@@ -4,9 +4,12 @@ public enum EStage { Stage1, Stage2, Stage3 }
 
 public enum EUIButtonType { None, Restart, Resume, Lobby, Quit, Close, Audio, Manual, Minimap }
 
-public enum ETouchablePanelType { Menu, Sub, Minimap };
+public enum ETouchablePanelType { Menu, Sub, Minimap, Dialog };
 
-public enum EDialogType { Text, PopUp }
+public enum EDialogType { Text, Image }
+
+public enum EPopUpType { Notice = 0, Caution, Warning }
+public enum EPopUpResponse { Ok, Yes, No, Error }
 
 [System.Serializable]
 public static class Tags
