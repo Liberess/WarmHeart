@@ -1,17 +1,16 @@
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
-    private const string GameDataFileName = "/GameData.json";
-    //private const string PlayerDataFileName = "/PlayerData.json";
+    #region ï¿½Î½ï¿½ï¿½Ï½ï¿½È­
 
-    #region ÀÎ½ºÅÏ½ºÈ­
     private static DataManager m_Instance;
+
     public static DataManager Instance
     {
         get
@@ -31,8 +30,9 @@ public class DataManager : MonoBehaviour
 
     private static GameObject m_Container;
 
-    [Space(5), Header("==== Game Data Information ====")]
-    [SerializeField] private GameData m_GameData;
+    [Space(5), Header("==== Game Data Information ====")] [SerializeField]
+    private GameData m_GameData;
+
     public GameData GameData
     {
         get
@@ -43,7 +43,11 @@ public class DataManager : MonoBehaviour
             return m_GameData;
         }
     }
+
     #endregion
+    
+    private readonly float SaveDataInterval = 15f;
+    private DateTime lastSaveTime;
 
     private void Awake()
     {
@@ -56,16 +60,31 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        LoadGameData();
     }
 
     private void Start()
     {
-        SaveGameData();
+        GPGSBinder.Instance.Login((success, localUser) =>
+        {
+            if (success)
+            {
+                LoadGameData();
+                AutoSave().Forget();
+            }
+        });
+    }
+ 
+    private async UniTaskVoid AutoSave()
+    {
+        while(true)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(SaveDataInterval), DelayType.UnscaledDeltaTime);
+            SaveGameData();
+        }
     }
 
     #region Game Data Load & Save
+
     public void InitializedGameData()
     {
         m_GameData.deathCount = 0;
@@ -74,7 +93,7 @@ public class DataManager : MonoBehaviour
 
         for (int i = 0; i < m_GameData.isClears.Length; i++)
             m_GameData.isClears[i] = false;
-        
+
         m_GameData.sfx = 1.0f;
         m_GameData.bgm = 1.0f;
 
@@ -95,32 +114,34 @@ public class DataManager : MonoBehaviour
 
     private void LoadGameData()
     {
-        string filePath = Application.persistentDataPath + GameDataFileName;
-
-        if (File.Exists(filePath))
+        GPGSBinder.Instance.LoadCloud(nameof(m_GameData), (success, data) =>
         {
-            string code = File.ReadAllText(filePath);
-            byte[] bytes = Convert.FromBase64String(code);
-            string FromJsonData = System.Text.Encoding.UTF8.GetString(bytes);
-            m_GameData = JsonUtility.FromJson<GameData>(FromJsonData);
-        }
-        else
-        {
-            m_GameData = new GameData();
-            File.Create(Application.persistentDataPath + GameDataFileName);
-
-            InitializedGameData();
-        }
+            if (success)
+            {
+                m_GameData = JsonUtility.FromJson<GameData>(data);
+            }
+            else
+            {
+                m_GameData = new GameData();
+                InitializedGameData();
+            }
+        });
     }
 
-    private void SaveGameData()
+    private void SaveGameData(bool immediately = false)
     {
-        string filePath = Application.persistentDataPath + GameDataFileName;
-
-        string ToJsonData = JsonUtility.ToJson(m_GameData);
-        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(ToJsonData);
-        string code = Convert.ToBase64String(bytes);
-        File.WriteAllText(filePath, code);
+        if (!Social.localUser.authenticated)
+            return;
+        
+        TimeSpan timeCal = DateTime.Now - lastSaveTime;
+        if(!immediately && timeCal.Seconds < SaveDataInterval)
+            return;
+        
+        lastSaveTime = DateTime.Now;
+        SaveTime();
+        
+        string toJsonData = JsonUtility.ToJson(m_GameData);
+        GPGSBinder.Instance.SaveCloud(nameof(m_GameData), toJsonData);
     }
 
     private void SaveTime()
@@ -136,11 +157,11 @@ public class DataManager : MonoBehaviour
         m_GameData.saveTime = nowSaveTime;
         m_GameData.saveTimeStr = m_GameData.saveTime.ToString();
     }
+
     #endregion
 
     private void OnApplicationQuit()
     {
-        SaveTime();
-        SaveGameData();
+        SaveGameData(true);
     }
 }
