@@ -8,7 +8,7 @@ public class DeathState : IState
     void IState.OnEnter(Monster ms)
     {
         this.ms = ms;
-        ms.GetComponent<Animator>().SetBool("Die", true);
+        ms.GetComponent<Animator>().SetTrigger("Die");
     }
 
     void IState.Update()

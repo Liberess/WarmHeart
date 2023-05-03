@@ -32,6 +32,11 @@ public class Monster : LivingEntity
 
     private void Update()
     {
+        if (CurrentHp != Hp)
+        {
+            GetComponent<Animator>().SetTrigger("Shot");
+            Hp = CurrentHp;
+        }
         currentState.Update();
         
     }

@@ -64,14 +64,6 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        GPGSBinder.Instance.Login((success, localUser) =>
-        {
-            if (success)
-            {
-                LoadGameData();
-                AutoSave().Forget();
-            }
-        });
     }
  
     private async UniTaskVoid AutoSave()
@@ -114,18 +106,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadGameData()
     {
-        GPGSBinder.Instance.LoadCloud(nameof(m_GameData), (success, data) =>
-        {
-            if (success)
-            {
-                m_GameData = JsonUtility.FromJson<GameData>(data);
-            }
-            else
-            {
-                m_GameData = new GameData();
-                InitializedGameData();
-            }
-        });
+        
     }
 
     private void SaveGameData(bool immediately = false)
@@ -141,7 +122,7 @@ public class DataManager : MonoBehaviour
         SaveTime();
         
         string toJsonData = JsonUtility.ToJson(m_GameData);
-        GPGSBinder.Instance.SaveCloud(nameof(m_GameData), toJsonData);
+        
     }
 
     private void SaveTime()
