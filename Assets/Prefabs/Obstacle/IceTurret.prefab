@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087404275234508842}
   - component: {fileID: 2087404275234508841}
-  - component: {fileID: 2087404275234508843}
+  - component: {fileID: 6500028638224373796}
   m_Layer: 0
   m_Name: IceTurret
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2087404275234508843
+--- !u!114 &6500028638224373796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceBulletPrefab: {fileID: 9150721267025719862, guid: 0e33d9fbd3f0bcc49b9b5234f86ff950, type: 3}
   responTime: 2
-  dircType: 2
+  dircType: 0
   shotPos: {fileID: 0}
 --- !u!1 &3406140140696838923
 GameObject:
